@@ -38,9 +38,9 @@ function createECGShader(canvasId) {
 
     void main() {
       vec2 uv = gl_FragCoord.xy / u_resolution;
-      float t = u_time * 0.3;
-      float blipX = mod(t * 0.9, 1.0);
-      float ekgY  = ekg(uv.x - t * 0.9) * 0.55 + 0.5;
+      float t = u_time * 0.1;
+      float blipX = mod(t * 0.35, 1.0);
+      float ekgY  = ekg(uv.x - t * 0.35) * 0.55 + 0.5;
       float dist  = abs(uv.y - ekgY);
 
       float glow = 0.0025 / (dist + 0.001);

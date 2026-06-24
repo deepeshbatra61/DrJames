@@ -233,11 +233,22 @@
       outline-offset: 3px;
       border-radius: var(--radius-default);
     }
-    input:focus-visible,
-    select:focus-visible {
+    input:focus-visible {
       outline: none;
       border-bottom-color: var(--color-brand-teal) !important;
       box-shadow: 0 1px 0 0 var(--color-brand-teal);
+    }
+
+    /* Custom themed select */
+    .enquiry-select:focus {
+      outline: none;
+      border-color: var(--color-brand-teal);
+      box-shadow: 0 0 0 3px rgba(18,140,146,0.15);
+    }
+    .enquiry-select option {
+      background: #fff;
+      color: var(--color-on-surface);
+      padding: 0.5rem;
     }
 
     /* Mobile menu transition */
@@ -285,17 +296,18 @@
     aria-label="Primary navigation"
   >
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
-      <div class="font-headline-md text-primary tracking-tight">
+      <div class="text-xl font-bold text-primary tracking-tight">
         Dr. James Caristo
       </div>
 
       <!-- Desktop nav -->
       <div class="hidden md:flex gap-10 items-center">
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors font-label-md py-1" href="#about">About</a>
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors font-label-md py-1" href="#experience">Expertise</a>
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors font-label-md py-1" href="#location">Locations</a>
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors font-label-md py-1" href="#contact">Contact</a>
-        <a class="btn-pill bg-primary text-white rounded-full px-8 py-3 font-label-md shadow-sm" href="#contact">
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#about">About</a>
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#career">Career</a>
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#experience">Qualifications</a>
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#location">Locations</a>
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#contact">Contact</a>
+        <a class="btn-pill bg-primary text-white rounded-full px-8 py-3 text-base font-semibold shadow-sm" href="#contact">
           Book Consultation
         </a>
       </div>
@@ -320,11 +332,11 @@
       class="md:hidden bg-surface border-t border-outline-variant/20 px-margin-mobile py-4 flex flex-col gap-4"
       role="menu"
     >
-      <a class="text-brand-teal font-label-md py-2 border-b border-outline-variant/10 uppercase tracking-widest" href="#about" role="menuitem">About</a>
-      <a class="text-on-surface-variant font-label-md py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#experience" role="menuitem">Expertise</a>
-      <a class="text-on-surface-variant font-label-md py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#location" role="menuitem">Locations</a>
-      <a class="text-on-surface-variant font-label-md py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#contact" role="menuitem">Contact</a>
-      <a class="btn-pill bg-primary text-white rounded-full px-8 py-3 font-label-md text-center mt-2 uppercase tracking-widest" href="#contact">
+      <a class="text-brand-teal text-base font-semibold py-2 border-b border-outline-variant/10 uppercase tracking-widest" href="#about" role="menuitem">About</a>
+      <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#experience" role="menuitem">Expertise</a>
+      <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#location" role="menuitem">Locations</a>
+      <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#contact" role="menuitem">Contact</a>
+      <a class="btn-pill bg-primary text-white rounded-full px-8 py-3 text-base font-semibold text-center mt-2 uppercase tracking-widest" href="#contact">
         Book Consultation
       </a>
     </div>
@@ -356,7 +368,7 @@
           <!-- Eyebrow -->
           <div class="flex items-center gap-4 mb-8 will-animate stagger-0">
             <div class="w-12 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
-            <span class="font-label-md text-brand-teal uppercase tracking-widest">Cardiothoracic Surgery Sydney</span>
+            <span class="text-base font-semibold text-brand-teal uppercase tracking-widest">Cardiothoracic Surgery Sydney</span>
           </div>
 
           <!-- Word-split headline -->
@@ -372,10 +384,10 @@
           </p>
 
           <div class="flex flex-col sm:flex-row gap-6 will-animate stagger-3">
-            <a class="btn-pill bg-primary text-white shadow-md rounded-full px-10 py-4 text-center font-label-md uppercase tracking-widest" href="#contact">
+            <a class="btn-pill bg-primary text-white shadow-md rounded-full px-10 py-4 text-center text-base font-semibold uppercase tracking-widest" href="#contact">
               Request Consultation
             </a>
-            <a class="btn-pill border border-white/30 text-white rounded-full px-10 py-4 text-center font-label-md uppercase tracking-widest hover:bg-white/10 transition-colors" href="#about">
+            <a class="btn-pill border border-white/30 text-white rounded-full px-10 py-4 text-center text-base font-semibold uppercase tracking-widest hover:bg-white/10 transition-colors" href="#about">
               Explore Practice
             </a>
           </div>
@@ -468,61 +480,235 @@
         </div>
       </div>
 
-      <!-- Slider -->
+      <!-- Slider — Education & Fellowships (real data) -->
       <div
         class="slider-container relative px-margin-mobile md:px-margin-desktop max-w-[1920px] mx-auto"
         id="expertise-slider"
         role="region"
-        aria-label="Expertise cards"
+        aria-label="Education and fellowship cards"
         style="z-index: var(--z-raised);"
       >
-        <!-- Card 1 -->
-        <div class="slider-item is-active glass-panel rounded-3xl p-10 md:p-16 flex flex-col justify-between min-h-[400px]" role="group" aria-label="Education">
+        <!-- Card 1: UNSW MBBS -->
+        <div class="slider-item is-active glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="UNSW Medical Degree">
           <div>
             <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">school</span>
-            <h3 class="font-headline-sm md:font-headline-md text-on-surface mb-4">Education</h3>
-            <div class="precision-line w-full my-6" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg">University of Sydney</p>
+            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2004 – 2009</div>
+            <h3 class="font-headline-md text-on-surface mb-2">UNSW Sydney</h3>
+            <div class="precision-line w-full my-5" aria-hidden="true"></div>
+            <p class="text-on-surface-variant font-body-lg leading-relaxed">Bachelor of Medicine, Bachelor of Surgery (MBBS)</p>
           </div>
-          <p class="text-outline font-body-md mt-8">Bachelor of Medicine, Bachelor of Surgery (Honours)</p>
         </div>
 
-        <!-- Card 2 -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-16 flex flex-col justify-between min-h-[400px]" role="group" aria-label="Fellowships">
+        <!-- Card 2: University of Sydney MS -->
+        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="University of Sydney Master of Surgery">
+          <div>
+            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">menu_book</span>
+            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2010 – 2013</div>
+            <h3 class="font-headline-md text-on-surface mb-2">University of Sydney</h3>
+            <div class="precision-line w-full my-5" aria-hidden="true"></div>
+            <p class="text-on-surface-variant font-body-lg leading-relaxed">Master of Surgery (MS)</p>
+          </div>
+        </div>
+
+        <!-- Card 3: RACS FRACS -->
+        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="FRACS Fellowship">
           <div>
             <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">workspace_premium</span>
-            <h3 class="font-headline-sm md:font-headline-md text-on-surface mb-4">Fellowships</h3>
-            <div class="precision-line w-full my-6" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg">Royal Prince Alfred Hospital</p>
+            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2020 – Present</div>
+            <h3 class="font-headline-md text-on-surface mb-2">Royal Australasian College of Surgeons</h3>
+            <div class="precision-line w-full my-5" aria-hidden="true"></div>
+            <p class="text-on-surface-variant font-body-lg leading-relaxed">Fellowship of the Royal Australasian College of Surgeons (FRACS)</p>
           </div>
-          <p class="text-outline font-body-md mt-8">Advanced Cardiothoracic Fellowship</p>
         </div>
 
-        <!-- Card 3 -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-16 flex flex-col justify-between min-h-[400px]" role="group" aria-label="Clinical Expertise">
+        <!-- Card 4: Edinburgh MIPDEd -->
+        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="Royal College of Surgeons of Edinburgh Fellowship">
+          <div>
+            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">biotech</span>
+            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2023 – 2024</div>
+            <h3 class="font-headline-md text-on-surface mb-2">Royal College of Surgeons of Edinburgh</h3>
+            <div class="precision-line w-full my-5" aria-hidden="true"></div>
+            <p class="text-on-surface-variant font-body-lg leading-relaxed">International Training Fellowship in Aortic Surgery (MIPDEd)</p>
+          </div>
+        </div>
+
+        <!-- Card 5: EACTS Fontan Fellowship -->
+        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="EACTS Francis Fontan Fellowship">
+          <div>
+            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">favorite</span>
+            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2023 – 2024</div>
+            <h3 class="font-headline-md text-on-surface mb-2">European Association for Cardio-Thoracic Surgery</h3>
+            <div class="precision-line w-full my-5" aria-hidden="true"></div>
+            <p class="text-on-surface-variant font-body-lg leading-relaxed">Francis Fontan Fund Fellowship — Aortic Root and Valve Repair</p>
+          </div>
+        </div>
+
+        <!-- Card 6: Harvard Medical School -->
+        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="Harvard Medical School Surgical Leadership">
+          <div>
+            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">military_tech</span>
+            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2024 – 2025</div>
+            <h3 class="font-headline-md text-on-surface mb-2">Harvard Medical School</h3>
+            <div class="precision-line w-full my-5" aria-hidden="true"></div>
+            <p class="text-on-surface-variant font-body-lg leading-relaxed">Surgical Leadership Program</p>
+          </div>
+        </div>
+
+        <!-- Card 7: Clinical Expertise -->
+        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="Clinical Expertise">
           <div>
             <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">vital_signs</span>
-            <h3 class="font-headline-sm md:font-headline-md text-on-surface mb-4">Clinical Expertise</h3>
-            <div class="precision-line w-full my-6" aria-hidden="true"></div>
-            <ul class="space-y-4">
-              <li class="flex items-center gap-4 will-animate stagger-0">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0" aria-hidden="true"></div>
+            <h3 class="font-headline-md text-on-surface mb-2">Clinical Expertise</h3>
+            <div class="precision-line w-full my-5" aria-hidden="true"></div>
+            <ul class="space-y-4 mt-4">
+              <li class="flex items-start gap-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
                 <span class="text-on-surface-variant font-body-lg">Minimally Invasive Valve Surgery</span>
               </li>
-              <li class="flex items-center gap-4 will-animate stagger-1">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0" aria-hidden="true"></div>
-                <span class="text-on-surface-variant font-body-lg">Aortic Reconstruction</span>
+              <li class="flex items-start gap-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
+                <span class="text-on-surface-variant font-body-lg">Aortic Root &amp; Valve Reconstruction</span>
               </li>
-              <li class="flex items-center gap-4 will-animate stagger-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0" aria-hidden="true"></div>
+              <li class="flex items-start gap-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
                 <span class="text-on-surface-variant font-body-lg">Coronary Artery Bypass Grafting</span>
               </li>
-              <li class="flex items-center gap-4 will-animate stagger-3">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0" aria-hidden="true"></div>
+              <li class="flex items-start gap-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
                 <span class="text-on-surface-variant font-body-lg">Thoracic Oncology</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
+                <span class="text-on-surface-variant font-body-lg">Cardiac &amp; Aortic Surgery</span>
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3b. Career Timeline ── -->
+    <section class="py-section-gap relative bg-surface" id="career">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="will-animate mb-16">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
+            <span class="text-base font-semibold text-brand-teal uppercase tracking-widest">Career</span>
+          </div>
+          <h2 class="font-display-lg-mobile md:font-headline-md text-on-surface">Clinical Experience</h2>
+        </div>
+
+        <div class="relative">
+          <!-- Vertical spine -->
+          <div class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-outline-variant/40" aria-hidden="true"></div>
+
+          <ol class="space-y-0 list-none" aria-label="Career timeline">
+
+            <!-- Current role -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-white text-base">stethoscope</span>
+              </div>
+              <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-1">Sep 2025 – Present</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgeon</h3>
+              <p class="text-on-surface-variant font-body-md">Royal Prince Alfred Hospital, Sydney NSW</p>
+            </li>
+
+            <!-- Barts -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-brand-teal flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-brand-teal text-base">flight</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Feb 2023 – Jan 2025 · 2 yrs</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiac &amp; Aortic Surgery Fellow</h3>
+              <p class="text-on-surface-variant font-body-md">Barts Health NHS Trust — Greater London, United Kingdom</p>
+            </li>
+
+            <!-- RPA Fellow -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">workspace_premium</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Nov 2020 – Feb 2023 · 2 yrs 4 mos</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Fellow</h3>
+              <p class="text-on-surface-variant font-body-md">Royal Prince Alfred Hospital, Sydney NSW</p>
+            </li>
+
+            <!-- Canberra Hospital -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Mar 2020 – Oct 2020 · 8 mos</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Fellow</h3>
+              <p class="text-on-surface-variant font-body-md">The Canberra Hospital, ACT</p>
+            </li>
+
+            <!-- Auckland -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2019 – Dec 2019 · 1 yr</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+              <p class="text-on-surface-variant font-body-md">Auckland City Hospital, Auckland, New Zealand</p>
+            </li>
+
+            <!-- St George -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2017 – Dec 2018 · 2 yrs</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+              <p class="text-on-surface-variant font-body-md">St George Hospital, Sydney NSW</p>
+            </li>
+
+            <!-- RPA Trainee 2015-16 -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2015 – Dec 2016 · 2 yrs</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+              <p class="text-on-surface-variant font-body-md">Royal Prince Alfred Hospital, Sydney NSW</p>
+            </li>
+
+            <!-- Princess Margaret Perth -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">pediatrics</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jul 2014 – Dec 2014 · 6 mos</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+              <p class="text-on-surface-variant font-body-md">Princess Margaret Hospital for Children, Perth WA</p>
+            </li>
+
+            <!-- Royal Perth -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2014 – Jun 2014 · 6 mos</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+              <p class="text-on-surface-variant font-body-md">Royal Perth Hospital, Perth WA</p>
+            </li>
+
+            <!-- RPA Registrar + JMO grouped -->
+            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
+              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
+              </div>
+              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2010 – Dec 2013</div>
+              <h3 class="font-headline-sm text-on-surface mb-1">Royal Prince Alfred Hospital</h3>
+              <ul class="mt-2 space-y-1">
+                <li class="text-on-surface-variant font-body-md">Cardiothoracic Surgery Registrar (2012)</li>
+                <li class="text-on-surface-variant font-body-md">Resident Medical Officer (2011)</li>
+                <li class="text-on-surface-variant font-body-md">Junior Medical Officer (2010)</li>
+              </ul>
+            </li>
+
+          </ol>
         </div>
       </div>
     </section>
@@ -644,17 +830,23 @@
                 </div>
 
                 <div>
-                  <label class="block font-label-md text-outline uppercase tracking-widest mb-2" for="enquiry">Enquiry Type</label>
-                  <select
-                    class="w-full bg-transparent border-0 border-b border-outline-variant px-0 py-3 text-on-surface transition-colors"
-                    id="enquiry" name="enquiry"
-                  >
-                    <option value="" disabled selected>Select...</option>
-                    <option>New Patient Consultation</option>
-                    <option>Follow-up Appointment</option>
-                    <option>Referring Doctor</option>
-                    <option>Other</option>
-                  </select>
+                  <label class="block text-xs font-semibold text-outline uppercase tracking-widest mb-3" for="enquiry">Enquiry Type</label>
+                  <div class="relative">
+                    <select
+                      id="enquiry" name="enquiry"
+                      class="enquiry-select w-full appearance-none bg-surface-container-low border border-outline-variant rounded-2xl px-5 py-4 pr-12 text-on-surface font-body-md cursor-pointer transition-all hover:border-brand-teal focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20"
+                    >
+                      <option value="" disabled selected class="text-outline">Select enquiry type…</option>
+                      <option>New Patient Consultation</option>
+                      <option>Follow-up Appointment</option>
+                      <option>Referring Doctor</option>
+                      <option>Other Enquiry</option>
+                    </select>
+                    <!-- Custom chevron -->
+                    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-outline" aria-hidden="true">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div id="form-success" hidden role="status" aria-live="polite"
