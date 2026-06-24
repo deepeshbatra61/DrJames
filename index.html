@@ -291,31 +291,31 @@
 
   <!-- ── Navigation ── -->
   <nav
-    class="fixed top-0 w-full transition-all duration-300 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30"
+    class="fixed top-0 w-full bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30"
     style="z-index: var(--z-nav);"
     aria-label="Primary navigation"
   >
-    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-14 max-w-container-max mx-auto">
-      <div class="text-xl font-bold text-primary tracking-tight">
+    <!-- Fixed-height bar — content centered by flexbox -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-12 max-w-container-max mx-auto">
+      <div class="text-lg font-bold text-primary tracking-tight leading-none">
         Dr. James Caristo
       </div>
 
       <!-- Desktop nav -->
-      <div class="hidden md:flex gap-10 items-center">
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#about">About</a>
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#career">Career</a>
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#experience">Qualifications</a>
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#location">Locations</a>
-        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-base font-semibold py-1" href="#contact">Contact</a>
-        <a class="btn-pill bg-primary text-white rounded-full px-8 py-3 text-base font-semibold shadow-sm" href="#contact">
-          Book Consultation
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-sm font-semibold leading-none" href="#about">About</a>
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-sm font-semibold leading-none" href="#career">Career</a>
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-sm font-semibold leading-none" href="#experience">Qualifications</a>
+        <a class="nav-link text-on-surface-variant hover:text-brand-teal transition-colors text-sm font-semibold leading-none" href="#location">Locations</a>
+        <a class="btn-pill bg-primary text-white rounded-full px-6 py-2 text-sm font-semibold shadow-sm leading-none" href="#contact">
+          Contact
         </a>
       </div>
 
       <!-- Mobile hamburger -->
       <button
         id="menu-toggle"
-        class="md:hidden text-primary p-1 rounded"
+        class="md:hidden text-primary p-1 rounded leading-none"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -325,19 +325,19 @@
       </button>
     </div>
 
-    <!-- Mobile menu -->
+    <!-- Mobile menu — absolutely positioned so it doesn't stretch the nav bar -->
     <div
       id="mobile-menu"
       hidden
-      class="md:hidden bg-surface border-t border-outline-variant/20 px-margin-mobile py-4 flex flex-col gap-4"
+      class="md:hidden absolute left-0 w-full bg-surface border-t border-outline-variant/20 px-margin-mobile py-4 flex flex-col gap-4 shadow-lg"
       role="menu"
     >
       <a class="text-brand-teal text-base font-semibold py-2 border-b border-outline-variant/10 uppercase tracking-widest" href="#about" role="menuitem">About</a>
-      <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#experience" role="menuitem">Expertise</a>
+      <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#career" role="menuitem">Career</a>
+      <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#experience" role="menuitem">Qualifications</a>
       <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#location" role="menuitem">Locations</a>
-      <a class="text-on-surface-variant text-base font-semibold py-2 border-b border-outline-variant/10 hover:text-brand-teal transition-colors uppercase tracking-widest" href="#contact" role="menuitem">Contact</a>
       <a class="btn-pill bg-primary text-white rounded-full px-8 py-3 text-base font-semibold text-center mt-2 uppercase tracking-widest" href="#contact">
-        Book Consultation
+        Contact
       </a>
     </div>
   </nav>
@@ -384,9 +384,6 @@
           </p>
 
           <div class="flex flex-col sm:flex-row gap-6 will-animate stagger-3">
-            <a class="btn-pill bg-primary text-white shadow-md rounded-full px-10 py-4 text-center text-base font-semibold uppercase tracking-widest" href="#contact">
-              Request Consultation
-            </a>
             <a class="btn-pill border border-white/30 text-white rounded-full px-10 py-4 text-center text-base font-semibold uppercase tracking-widest hover:bg-white/10 transition-colors" href="#about">
               Explore Practice
             </a>
@@ -402,8 +399,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
           <!-- Portrait -->
-          <div class="col-span-1 lg:col-span-5 relative order-2 lg:order-1 will-animate">
-            <div class="aspect-[3/4] bg-surface-container rounded-2xl overflow-hidden glass-panel p-3">
+          <div class="col-span-1 lg:col-span-4 relative order-2 lg:order-1 will-animate">
+            <div class="aspect-[3/4] max-w-xs mx-auto bg-surface-container rounded-2xl overflow-hidden glass-panel p-3">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI3UATeaAS1z-xu1v_J4ahQTrZdiCFRgllamjQrj8g8fyMF3DwRYkT9ILLav8UsOrCp8MHFdquT2JsCW4WYjSPEJSpRpadwQ_hjOwA6hctAyvGRGrQxitbIf8OY-RsRfs8FpVzht_HgJq5L4moL-kuwQslLgZj-t8lYgTFCb-x5Xot_olHL-kAyYrMO5UnZVyhkGROZ6LLR09j0vlu5Oe-nyXCh_gxvKgqIodTKkIkWaEsEY0MJWksFYZE9Ek6BxFc6gXyVaNwYwJi"
                 alt="Portrait of Dr. James Caristo, cardiothoracic surgeon, in professional clinical setting"
@@ -415,7 +412,7 @@
           </div>
 
           <!-- Copy -->
-          <div class="col-span-1 lg:col-span-6 lg:col-start-7 order-1 lg:order-2 will-animate">
+          <div class="col-span-1 lg:col-span-7 lg:col-start-6 order-1 lg:order-2 will-animate">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
               <span class="font-label-md text-brand-teal uppercase tracking-widest">The Surgeon</span>
@@ -682,45 +679,7 @@
       <div class="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop" style="z-index: var(--z-raised);">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
 
-          <!-- Locations -->
-          <div class="will-animate">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
-              <span class="font-label-md text-brand-teal uppercase tracking-widest">Presence</span>
-            </div>
-            <h2 class="font-display-lg-mobile md:font-headline-md text-white mb-12">Practice Locations</h2>
-            <div class="space-y-8">
-
-              <div class="card-hover glass-panel p-8 rounded-2xl border border-white/20 will-animate stagger-1">
-                <h3 class="font-headline-sm text-on-surface mb-4">Macquarie University Hospital</h3>
-                <p class="text-on-surface-variant font-body-md mb-6 leading-relaxed">
-                  Suite 401, Clinic Building<br />
-                  2 Technology Place<br />
-                  Macquarie University NSW 2109
-                </p>
-                <a class="cta-icon-link text-brand-teal font-label-md flex items-center gap-2 w-fit uppercase tracking-widest" href="#" aria-label="View map for Macquarie University Hospital">
-                  View Map
-                  <span class="material-symbols-outlined text-sm icon" aria-hidden="true">east</span>
-                </a>
-              </div>
-
-              <div class="card-hover glass-panel p-8 rounded-2xl border border-white/20 will-animate stagger-2">
-                <h3 class="font-headline-sm text-on-surface mb-4">St Vincent's Private Hospital</h3>
-                <p class="text-on-surface-variant font-body-md mb-6 leading-relaxed">
-                  Suite 705, Xavier Building<br />
-                  406 Victoria Street<br />
-                  Darlinghurst NSW 2010
-                </p>
-                <a class="cta-icon-link text-brand-teal font-label-md flex items-center gap-2 w-fit uppercase tracking-widest" href="#" aria-label="View map for St Vincent's Private Hospital">
-                  View Map
-                  <span class="material-symbols-outlined text-sm icon" aria-hidden="true">east</span>
-                </a>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Contact form -->
+          <!-- Contact form — LEFT -->
           <div id="contact" class="will-animate">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
@@ -819,6 +778,44 @@
                 </button>
 
               </form>
+            </div>
+          </div>
+
+          <!-- Locations — RIGHT -->
+          <div class="will-animate">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
+              <span class="font-label-md text-brand-teal uppercase tracking-widest">Presence</span>
+            </div>
+            <h2 class="font-display-lg-mobile md:font-headline-md text-white mb-12">Practice Locations</h2>
+            <div class="space-y-8">
+
+              <div class="card-hover glass-panel p-8 rounded-2xl border border-white/20 will-animate stagger-1">
+                <h3 class="font-headline-sm text-on-surface mb-4">Macquarie University Hospital</h3>
+                <p class="text-on-surface-variant font-body-md mb-6 leading-relaxed">
+                  Suite 401, Clinic Building<br />
+                  2 Technology Place<br />
+                  Macquarie University NSW 2109
+                </p>
+                <a class="cta-icon-link text-brand-teal font-label-md flex items-center gap-2 w-fit uppercase tracking-widest" href="#" aria-label="View map for Macquarie University Hospital">
+                  View Map
+                  <span class="material-symbols-outlined text-sm icon" aria-hidden="true">east</span>
+                </a>
+              </div>
+
+              <div class="card-hover glass-panel p-8 rounded-2xl border border-white/20 will-animate stagger-2">
+                <h3 class="font-headline-sm text-on-surface mb-4">St Vincent's Private Hospital</h3>
+                <p class="text-on-surface-variant font-body-md mb-6 leading-relaxed">
+                  Suite 705, Xavier Building<br />
+                  406 Victoria Street<br />
+                  Darlinghurst NSW 2010
+                </p>
+                <a class="cta-icon-link text-brand-teal font-label-md flex items-center gap-2 w-fit uppercase tracking-widest" href="#" aria-label="View map for St Vincent's Private Hospital">
+                  View Map
+                  <span class="material-symbols-outlined text-sm icon" aria-hidden="true">east</span>
+                </a>
+              </div>
+
             </div>
           </div>
 
