@@ -207,11 +207,11 @@ function initCounters() {
   counters.forEach(el => obs.observe(el));
 }
 
-// ── Slider ───────────────────────────────────────────────────
-function initSlider() {
-  const slider = document.getElementById('expertise-slider');
-  const btnL   = document.getElementById('slide-left');
-  const btnR   = document.getElementById('slide-right');
+// ── Slider (generic — handles any slider + prev/next pair) ───
+function initSliderInstance(sliderId, btnLeftId, btnRightId) {
+  const slider = document.getElementById(sliderId);
+  const btnL   = document.getElementById(btnLeftId);
+  const btnR   = document.getElementById(btnRightId);
   if (!slider) return;
 
   const items = Array.from(slider.querySelectorAll('.slider-item'));
@@ -236,6 +236,11 @@ function initSlider() {
 
   if (btnL) btnL.addEventListener('click', () => scrollBy(-1));
   if (btnR) btnR.addEventListener('click', () => scrollBy(1));
+}
+
+function initSlider() {
+  initSliderInstance('qual-slider',    'qual-slide-left',    'qual-slide-right');
+  initSliderInstance('career-slider',  'career-slide-left',  'career-slide-right');
 }
 
 // ── Step 8: Form submit handler ──────────────────────────────
@@ -276,6 +281,7 @@ function initNavHighlight() {
 // ── Boot ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   createECGShader('ecg-expertise');
+  createECGShader('ecg-career');
   createECGShader('ecg-contact');
 
   initWordSplitHeadlines();

@@ -438,280 +438,235 @@
       </div>
     </section>
 
-    <!-- ── 3. Expertise (WebGL ECG + Slider) ── -->
+    <!-- ── 3. Qualifications (WebGL ECG + Slider) — latest first ── -->
     <section
       class="py-section-gap relative overflow-hidden"
       id="experience"
       style="background-color: var(--color-dark-bg);"
     >
-      <!-- Step 9 (critical fix): unique canvas ID "ecg-expertise" -->
       <div class="absolute inset-0 opacity-80" aria-hidden="true" style="z-index: var(--z-base);">
         <canvas id="ecg-expertise" class="w-full h-full" style="display:block;"></canvas>
       </div>
 
-      <!-- Section header -->
-      <div class="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-16" style="z-index: var(--z-raised);">
+      <div class="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-12" style="z-index: var(--z-raised);">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div class="will-animate">
             <div class="flex items-center gap-4 mb-4">
               <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
-              <span class="font-label-md text-brand-teal uppercase tracking-widest">Expertise</span>
+              <span class="text-base font-semibold text-brand-teal uppercase tracking-widest">Qualifications</span>
             </div>
-            <h2 class="font-display-lg-mobile md:font-headline-md text-white">Qualifications &amp; Mastery</h2>
+            <h2 class="font-display-lg-mobile md:font-headline-md text-white">Education &amp; Fellowships</h2>
           </div>
           <div class="flex gap-4 will-animate stagger-1">
-            <button
-              class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-              id="slide-left"
-              aria-label="Previous expertise card"
-              type="button"
-            >
+            <button class="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all" id="qual-slide-left" aria-label="Previous qualification card" type="button">
               <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
             </button>
-            <button
-              class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-              id="slide-right"
-              aria-label="Next expertise card"
-              type="button"
-            >
+            <button class="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all" id="qual-slide-right" aria-label="Next qualification card" type="button">
               <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Slider — Education & Fellowships (real data) -->
-      <div
-        class="slider-container relative px-margin-mobile md:px-margin-desktop max-w-[1920px] mx-auto"
-        id="expertise-slider"
-        role="region"
-        aria-label="Education and fellowship cards"
-        style="z-index: var(--z-raised);"
-      >
-        <!-- Card 1: UNSW MBBS -->
-        <div class="slider-item is-active glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="UNSW Medical Degree">
-          <div>
-            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">school</span>
-            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2004 – 2009</div>
-            <h3 class="font-headline-md text-on-surface mb-2">UNSW Sydney</h3>
-            <div class="precision-line w-full my-5" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg leading-relaxed">Bachelor of Medicine, Bachelor of Surgery (MBBS)</p>
-          </div>
+      <div class="slider-container relative px-margin-mobile md:px-margin-desktop max-w-[1920px] mx-auto" id="qual-slider" role="region" aria-label="Qualification cards" style="z-index: var(--z-raised);">
+
+        <!-- 1. Harvard 2024-2025 (latest) -->
+        <div class="slider-item is-active glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Harvard Medical School">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">2024 – 2025</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Harvard Medical School</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Surgical Leadership Program</p>
         </div>
 
-        <!-- Card 2: University of Sydney MS -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="University of Sydney Master of Surgery">
-          <div>
-            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">menu_book</span>
-            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2010 – 2013</div>
-            <h3 class="font-headline-md text-on-surface mb-2">University of Sydney</h3>
-            <div class="precision-line w-full my-5" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg leading-relaxed">Master of Surgery (MS)</p>
-          </div>
+        <!-- 2. EACTS 2023-2024 -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="EACTS Francis Fontan Fellowship">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">2023 – 2024</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">European Association for Cardio-Thoracic Surgery</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Francis Fontan Fund Fellowship — Aortic Root and Valve Repair</p>
         </div>
 
-        <!-- Card 3: RACS FRACS -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="FRACS Fellowship">
-          <div>
-            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">workspace_premium</span>
-            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2020 – Present</div>
-            <h3 class="font-headline-md text-on-surface mb-2">Royal Australasian College of Surgeons</h3>
-            <div class="precision-line w-full my-5" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg leading-relaxed">Fellowship of the Royal Australasian College of Surgeons (FRACS)</p>
-          </div>
+        <!-- 3. Edinburgh 2023-2024 -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Royal College of Surgeons Edinburgh">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">2023 – 2024</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Royal College of Surgeons of Edinburgh</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">International Training Fellowship in Aortic Surgery (MIPDEd)</p>
         </div>
 
-        <!-- Card 4: Edinburgh MIPDEd -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="Royal College of Surgeons of Edinburgh Fellowship">
-          <div>
-            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">biotech</span>
-            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2023 – 2024</div>
-            <h3 class="font-headline-md text-on-surface mb-2">Royal College of Surgeons of Edinburgh</h3>
-            <div class="precision-line w-full my-5" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg leading-relaxed">International Training Fellowship in Aortic Surgery (MIPDEd)</p>
-          </div>
+        <!-- 4. RACS FRACS 2020-Present -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="RACS FRACS">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">2020 – Present</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Royal Australasian College of Surgeons</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Fellowship of the Royal Australasian College of Surgeons (FRACS)</p>
         </div>
 
-        <!-- Card 5: EACTS Fontan Fellowship -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="EACTS Francis Fontan Fellowship">
-          <div>
-            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">favorite</span>
-            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2023 – 2024</div>
-            <h3 class="font-headline-md text-on-surface mb-2">European Association for Cardio-Thoracic Surgery</h3>
-            <div class="precision-line w-full my-5" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg leading-relaxed">Francis Fontan Fund Fellowship — Aortic Root and Valve Repair</p>
-          </div>
+        <!-- 5. University of Sydney MS 2010-2013 -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="University of Sydney Master of Surgery">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">2010 – 2013</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">University of Sydney</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Master of Surgery (MS)</p>
         </div>
 
-        <!-- Card 6: Harvard Medical School -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="Harvard Medical School Surgical Leadership">
-          <div>
-            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">military_tech</span>
-            <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-2">2024 – 2025</div>
-            <h3 class="font-headline-md text-on-surface mb-2">Harvard Medical School</h3>
-            <div class="precision-line w-full my-5" aria-hidden="true"></div>
-            <p class="text-on-surface-variant font-body-lg leading-relaxed">Surgical Leadership Program</p>
-          </div>
+        <!-- 6. UNSW MBBS 2004-2009 -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="UNSW MBBS">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">2004 – 2009</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">UNSW Sydney</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Bachelor of Medicine, Bachelor of Surgery (MBBS)</p>
         </div>
 
-        <!-- Card 7: Clinical Expertise -->
-        <div class="slider-item glass-panel rounded-3xl p-10 md:p-14 flex flex-col justify-between min-h-[440px]" role="group" aria-label="Clinical Expertise">
-          <div>
-            <span class="material-symbols-outlined text-brand-teal text-4xl mb-8 block" aria-hidden="true">vital_signs</span>
-            <h3 class="font-headline-md text-on-surface mb-2">Clinical Expertise</h3>
-            <div class="precision-line w-full my-5" aria-hidden="true"></div>
-            <ul class="space-y-4 mt-4">
-              <li class="flex items-start gap-4">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
-                <span class="text-on-surface-variant font-body-lg">Minimally Invasive Valve Surgery</span>
-              </li>
-              <li class="flex items-start gap-4">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
-                <span class="text-on-surface-variant font-body-lg">Aortic Root &amp; Valve Reconstruction</span>
-              </li>
-              <li class="flex items-start gap-4">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
-                <span class="text-on-surface-variant font-body-lg">Coronary Artery Bypass Grafting</span>
-              </li>
-              <li class="flex items-start gap-4">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
-                <span class="text-on-surface-variant font-body-lg">Thoracic Oncology</span>
-              </li>
-              <li class="flex items-start gap-4">
-                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
-                <span class="text-on-surface-variant font-body-lg">Cardiac &amp; Aortic Surgery</span>
-              </li>
-            </ul>
-          </div>
+        <!-- 7. Clinical Expertise -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Clinical Expertise">
+          <h3 class="font-headline-sm text-on-surface mb-1">Clinical Expertise</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <ul class="space-y-3 mt-2">
+            <li class="flex items-start gap-3">
+              <div class="w-1 h-1 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
+              <span class="text-on-surface-variant font-body-md">Minimally Invasive Valve Surgery</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-1 h-1 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
+              <span class="text-on-surface-variant font-body-md">Aortic Root &amp; Valve Reconstruction</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-1 h-1 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
+              <span class="text-on-surface-variant font-body-md">Coronary Artery Bypass Grafting</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-1 h-1 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
+              <span class="text-on-surface-variant font-body-md">Thoracic Oncology</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-1 h-1 rounded-full bg-brand-teal flex-shrink-0 mt-2" aria-hidden="true"></div>
+              <span class="text-on-surface-variant font-body-md">Cardiac &amp; Aortic Surgery</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ── 3b. Career Timeline ── -->
-    <section class="py-section-gap relative bg-surface" id="career">
-      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <div class="will-animate mb-16">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
-            <span class="text-base font-semibold text-brand-teal uppercase tracking-widest">Career</span>
+    <!-- ── 3b. Career (same ECG slider format) — latest first ── -->
+    <section
+      class="py-section-gap relative overflow-hidden"
+      id="career"
+      style="background-color: var(--color-dark-bg);"
+    >
+      <div class="absolute inset-0 opacity-80" aria-hidden="true" style="z-index: var(--z-base);">
+        <canvas id="ecg-career" class="w-full h-full" style="display:block;"></canvas>
+      </div>
+
+      <div class="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-12" style="z-index: var(--z-raised);">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div class="will-animate">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
+              <span class="text-base font-semibold text-brand-teal uppercase tracking-widest">Career</span>
+            </div>
+            <h2 class="font-display-lg-mobile md:font-headline-md text-white">Clinical Experience</h2>
           </div>
-          <h2 class="font-display-lg-mobile md:font-headline-md text-on-surface">Clinical Experience</h2>
-        </div>
-
-        <div class="relative">
-          <!-- Vertical spine -->
-          <div class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-outline-variant/40" aria-hidden="true"></div>
-
-          <ol class="space-y-0 list-none" aria-label="Career timeline">
-
-            <!-- Current role -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-white text-base">stethoscope</span>
-              </div>
-              <div class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-1">Sep 2025 – Present</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgeon</h3>
-              <p class="text-on-surface-variant font-body-md">Royal Prince Alfred Hospital, Sydney NSW</p>
-            </li>
-
-            <!-- Barts -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-brand-teal flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-brand-teal text-base">flight</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Feb 2023 – Jan 2025 · 2 yrs</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiac &amp; Aortic Surgery Fellow</h3>
-              <p class="text-on-surface-variant font-body-md">Barts Health NHS Trust — Greater London, United Kingdom</p>
-            </li>
-
-            <!-- RPA Fellow -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">workspace_premium</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Nov 2020 – Feb 2023 · 2 yrs 4 mos</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Fellow</h3>
-              <p class="text-on-surface-variant font-body-md">Royal Prince Alfred Hospital, Sydney NSW</p>
-            </li>
-
-            <!-- Canberra Hospital -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Mar 2020 – Oct 2020 · 8 mos</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Fellow</h3>
-              <p class="text-on-surface-variant font-body-md">The Canberra Hospital, ACT</p>
-            </li>
-
-            <!-- Auckland -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2019 – Dec 2019 · 1 yr</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
-              <p class="text-on-surface-variant font-body-md">Auckland City Hospital, Auckland, New Zealand</p>
-            </li>
-
-            <!-- St George -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2017 – Dec 2018 · 2 yrs</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
-              <p class="text-on-surface-variant font-body-md">St George Hospital, Sydney NSW</p>
-            </li>
-
-            <!-- RPA Trainee 2015-16 -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2015 – Dec 2016 · 2 yrs</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
-              <p class="text-on-surface-variant font-body-md">Royal Prince Alfred Hospital, Sydney NSW</p>
-            </li>
-
-            <!-- Princess Margaret Perth -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">pediatrics</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jul 2014 – Dec 2014 · 6 mos</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
-              <p class="text-on-surface-variant font-body-md">Princess Margaret Hospital for Children, Perth WA</p>
-            </li>
-
-            <!-- Royal Perth -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2014 – Jun 2014 · 6 mos</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
-              <p class="text-on-surface-variant font-body-md">Royal Perth Hospital, Perth WA</p>
-            </li>
-
-            <!-- RPA Registrar + JMO grouped -->
-            <li class="relative pl-12 md:pl-20 pb-12 will-animate">
-              <div class="absolute left-0 md:left-4 top-1 w-8 h-8 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center" aria-hidden="true">
-                <span class="material-symbols-outlined text-outline text-base">local_hospital</span>
-              </div>
-              <div class="text-outline text-sm font-semibold uppercase tracking-widest mb-1">Jan 2010 – Dec 2013</div>
-              <h3 class="font-headline-sm text-on-surface mb-1">Royal Prince Alfred Hospital</h3>
-              <ul class="mt-2 space-y-1">
-                <li class="text-on-surface-variant font-body-md">Cardiothoracic Surgery Registrar (2012)</li>
-                <li class="text-on-surface-variant font-body-md">Resident Medical Officer (2011)</li>
-                <li class="text-on-surface-variant font-body-md">Junior Medical Officer (2010)</li>
-              </ul>
-            </li>
-
-          </ol>
+          <div class="flex gap-4 will-animate stagger-1">
+            <button class="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all" id="career-slide-left" aria-label="Previous career card" type="button">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            </button>
+            <button class="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all" id="career-slide-right" aria-label="Next career card" type="button">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </button>
+          </div>
         </div>
       </div>
+
+      <div class="slider-container relative px-margin-mobile md:px-margin-desktop max-w-[1920px] mx-auto" id="career-slider" role="region" aria-label="Career cards" style="z-index: var(--z-raised);">
+
+        <!-- 1. Current — RPA Cardiothoracic Surgeon -->
+        <div class="slider-item is-active glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgeon, Royal Prince Alfred Hospital">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Sep 2025 – Present</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgeon</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Royal Prince Alfred Hospital<br/>Sydney, New South Wales</p>
+        </div>
+
+        <!-- 2. Barts London -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiac and Aortic Surgery Fellow, Barts Health">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Feb 2023 – Jan 2025 · 2 yrs</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiac &amp; Aortic Surgery Fellow</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Barts Health NHS Trust<br/>Greater London, United Kingdom</p>
+        </div>
+
+        <!-- 3. RPA Fellow -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgery Fellow, Royal Prince Alfred Hospital">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Nov 2020 – Feb 2023 · 2 yrs 4 mos</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Fellow</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Royal Prince Alfred Hospital<br/>Sydney, New South Wales</p>
+        </div>
+
+        <!-- 4. Canberra Hospital -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgery Fellow, The Canberra Hospital">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Mar 2020 – Oct 2020 · 8 mos</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Fellow</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">The Canberra Hospital<br/>Australian Capital Territory</p>
+        </div>
+
+        <!-- 5. Auckland -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgery Trainee, Auckland City Hospital">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Jan 2019 – Dec 2019 · 1 yr</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Auckland City Hospital<br/>Auckland, New Zealand</p>
+        </div>
+
+        <!-- 6. St George -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgery Trainee, St George Hospital">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Jan 2017 – Dec 2018 · 2 yrs</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">St George Hospital<br/>Sydney, New South Wales</p>
+        </div>
+
+        <!-- 7. RPA Trainee 2015-16 -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgery Trainee, Royal Prince Alfred Hospital 2015">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Jan 2015 – Dec 2016 · 2 yrs</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Royal Prince Alfred Hospital<br/>Sydney, New South Wales</p>
+        </div>
+
+        <!-- 8. Princess Margaret Perth -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgery Trainee, Princess Margaret Hospital">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Jul 2014 – Dec 2014 · 6 mos</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Princess Margaret Hospital for Children<br/>Perth, Western Australia</p>
+        </div>
+
+        <!-- 9. Royal Perth -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Cardiothoracic Surgery Trainee, Royal Perth Hospital">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Jan 2014 – Jun 2014 · 6 mos</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Cardiothoracic Surgery Trainee</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <p class="text-on-surface-variant font-body-md leading-relaxed">Royal Perth Hospital<br/>Perth, Western Australia</p>
+        </div>
+
+        <!-- 10. RPA Early Career -->
+        <div class="slider-item glass-panel rounded-2xl p-8 md:p-10 flex flex-col min-h-[320px]" role="group" aria-label="Royal Prince Alfred Hospital early career">
+          <div class="text-brand-teal text-xs font-semibold uppercase tracking-widest mb-3">Jan 2010 – Dec 2013</div>
+          <h3 class="font-headline-sm text-on-surface mb-1">Royal Prince Alfred Hospital</h3>
+          <div class="precision-line w-full my-4" aria-hidden="true"></div>
+          <ul class="space-y-2">
+            <li class="text-on-surface-variant font-body-md">Cardiothoracic Surgery Registrar (2012)</li>
+            <li class="text-on-surface-variant font-body-md">Resident Medical Officer (2011)</li>
+            <li class="text-on-surface-variant font-body-md">Junior Medical Officer (2010)</li>
+          </ul>
+        </div>
+
+      </div>
     </section>
+
 
     <!-- ── 4. Locations + Contact ── -->
     <section
