@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. James Caristo | Cardiothoracic Surgery Sydney</title>
+
+  <!-- Step 1: Token system -->
+  <link rel="stylesheet" href="tokens.css" />
+
+  <!-- Step 2: Typography — single canonical font load, no duplicates -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          /* Step 3: All colors reference the token system values */
+          colors: {
+            "primary":                    "var(--color-primary)",
+            "on-primary":                 "var(--color-on-primary)",
+            "primary-container":          "var(--color-primary-container)",
+            "on-primary-container":       "var(--color-on-primary-container)",
+            "primary-fixed":              "var(--color-primary-fixed)",
+            "primary-fixed-dim":          "var(--color-primary-fixed-dim)",
+            "on-primary-fixed":           "var(--color-on-primary-fixed)",
+            "on-primary-fixed-variant":   "var(--color-on-primary-fixed-variant)",
+            "inverse-primary":            "var(--color-inverse-primary)",
+            "secondary":                  "var(--color-secondary)",
+            "on-secondary":               "var(--color-on-secondary)",
+            "secondary-container":        "var(--color-secondary-container)",
+            "on-secondary-container":     "var(--color-on-secondary-container)",
+            "secondary-fixed":            "var(--color-secondary-fixed)",
+            "secondary-fixed-dim":        "var(--color-secondary-fixed-dim)",
+            "on-secondary-fixed":         "var(--color-on-secondary-fixed)",
+            "tertiary":                   "var(--color-tertiary)",
+            "on-tertiary":                "var(--color-on-tertiary)",
+            "tertiary-container":         "var(--color-tertiary-container)",
+            "on-tertiary-container":      "var(--color-on-tertiary-container)",
+            "tertiary-fixed":             "var(--color-tertiary-fixed)",
+            "tertiary-fixed-dim":         "var(--color-tertiary-fixed-dim)",
+            "on-tertiary-fixed":          "var(--color-on-tertiary-fixed)",
+            "on-tertiary-fixed-variant":  "var(--color-on-tertiary-fixed-variant)",
+            "error":                      "var(--color-error)",
+            "on-error":                   "var(--color-on-error)",
+            "error-container":            "var(--color-error-container)",
+            "on-error-container":         "var(--color-on-error-container)",
+            "surface":                    "var(--color-surface)",
+            "surface-dim":                "var(--color-surface-dim)",
+            "surface-bright":             "var(--color-surface-bright)",
+            "surface-container-lowest":   "var(--color-surface-container-lowest)",
+            "surface-container-low":      "var(--color-surface-container-low)",
+            "surface-container":          "var(--color-surface-container)",
+            "surface-container-high":     "var(--color-surface-container-high)",
+            "surface-container-highest":  "var(--color-surface-container-highest)",
+            "surface-variant":            "var(--color-surface-variant)",
+            "surface-tint":               "var(--color-surface-tint)",
+            "on-surface":                 "var(--color-on-surface)",
+            "on-surface-variant":         "var(--color-on-surface-variant)",
+            "inverse-surface":            "var(--color-inverse-surface)",
+            "inverse-on-surface":         "var(--color-inverse-on-surface)",
+            "outline":                    "var(--color-outline)",
+            "outline-variant":            "var(--color-outline-variant)",
+            "background":                 "var(--color-background)",
+            "on-background":              "var(--color-on-background)",
+          },
+          /* Step 4: Spacing from tokens — uniform across the file */
+          spacing: {
+            "unit":           "8px",
+            "container-max":  "1280px",
+            "gutter":         "24px",
+            "margin-mobile":  "16px",
+            "margin-desktop": "64px",
+            "section-gap":    "120px",
+          },
+          /* Step 2: Typography tokens — Source Serif 4 + Inter only */
+          fontFamily: {
+            "display-lg":         ['"Source Serif 4"', "Georgia", "serif"],
+            "display-lg-mobile":  ['"Source Serif 4"', "Georgia", "serif"],
+            "headline-lg":        ['"Source Serif 4"', "Georgia", "serif"],
+            "headline-md":        ['"Source Serif 4"', "Georgia", "serif"],
+            "body-lg":            ["Inter", "system-ui", "sans-serif"],
+            "body-md":            ["Inter", "system-ui", "sans-serif"],
+            "label-md":           ["Inter", "system-ui", "sans-serif"],
+            "caption":            ["Inter", "system-ui", "sans-serif"],
+          },
+          fontSize: {
+            "display-lg":        ["56px", { lineHeight: "64px", fontWeight: "600", letterSpacing: "-0.02em" }],
+            "display-lg-mobile": ["40px", { lineHeight: "48px", fontWeight: "600" }],
+            "headline-lg":       ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "headline-md":       ["24px", { lineHeight: "32px", fontWeight: "500" }],
+            "body-lg":           ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md":           ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-md":          ["14px", { lineHeight: "20px", fontWeight: "600", letterSpacing: "0.05em" }],
+            "caption":           ["12px", { lineHeight: "16px", fontWeight: "400" }],
+          },
+          /* Step 1: Border radius from tokens */
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            sm:      "0.125rem",
+            md:      "0.375rem",
+            lg:      "0.5rem",
+            xl:      "0.75rem",
+            full:    "9999px",
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Precision Divider component (uses token vars) ── */
+    .precision-divider {
+      position: relative;
+      width: 1px;
+      background-color: rgba(116, 119, 127, 0.2);
+      height: 100%;
+    }
+    .precision-divider::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -1.5px;
+      width: 4px;
+      height: 4px;
+      background-color: var(--color-on-tertiary-container);
+      border-radius: 50%;
+    }
+    .precision-divider-h {
+      position: relative;
+      height: 1px;
+      background-color: rgba(116, 119, 127, 0.2);
+      width: 100%;
+    }
+    .precision-divider-h::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -1.5px;
+      width: 4px;
+      height: 4px;
+      background-color: var(--color-on-tertiary-container);
+      border-radius: 50%;
+    }
+
+    /* ── Ambient shadow (Step 1 token) ── */
+    .ambient-shadow {
+      box-shadow: var(--shadow-ambient);
+    }
+
+    /* ── Step 6: Animation keyframes ── */
+    @keyframes blur-slide-up {
+      from { opacity: 0; filter: blur(12px); transform: translateY(28px); }
+      to   { opacity: 1; filter: blur(0px);  transform: translateY(0);    }
+    }
+    @keyframes line-reveal {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    @keyframes image-enter {
+      from { opacity: 0; filter: blur(10px); transform: scale(0.92); }
+      to   { opacity: 1; filter: blur(0px);  transform: scale(1);    }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Entrance animation class (applied by JS on viewport entry) */
+    .animate-entrance {
+      animation: blur-slide-up var(--duration-slower) var(--ease-out-expo) both;
+    }
+    .animate-image {
+      animation: image-enter var(--duration-slow) var(--ease-spring) both;
+    }
+    .animate-line {
+      transform-origin: left;
+      animation: line-reveal var(--duration-line) var(--ease-sharp) both;
+    }
+
+    /* Initial hidden state for elements that will animate in */
+    .will-animate {
+      opacity: 0;
+    }
+    .will-animate-image {
+      opacity: 0;
+    }
+    .will-animate-line {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    /* Stagger delay helpers */
+    .stagger-0  { animation-delay: 0s; }
+    .stagger-1  { animation-delay: 0.09s; }
+    .stagger-2  { animation-delay: 0.18s; }
+    .stagger-3  { animation-delay: 0.27s; }
+    .stagger-4  { animation-delay: 0.36s; }
+
+    /* Word-by-word headline spans */
+    .word-split {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 0.1em;
+    }
+    .word-split .word {
+      display: inline-block;
+      margin-right: 0.28em;
+      opacity: 0;
+    }
+    .word-split.animate-words .word {
+      animation: blur-slide-up var(--duration-slower) var(--ease-out-expo) both;
+    }
+
+    /* Step 6: Hover micro-interactions */
+    .btn-primary {
+      transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+    .btn-primary:hover  { transform: scale(1.05); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-secondary {
+      transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-secondary:hover  { transform: scale(1.05); }
+    .btn-secondary:active { transform: scale(0.97); }
+
+    /* Card hover */
+    .card-hover {
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.25s ease;
+    }
+    .card-hover:hover { transform: translateY(-7px) scale(1.018); }
+
+    /* Nav underline draw effect */
+    .nav-link {
+      position: relative;
+      text-decoration: none;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-on-tertiary-container);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link.active::after { transform: scaleX(1); }
+
+    /* Icon arrow nudge on CTA links */
+    .cta-link .cta-icon {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .cta-link:hover .cta-icon { transform: translateX(3px); }
+
+    /* Step 8: Accessible focus styles — replaces focus:ring-0 */
+    :focus-visible {
+      outline: 2px solid var(--color-on-tertiary-container);
+      outline-offset: 3px;
+      border-radius: var(--radius-default);
+    }
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      border-bottom-color: var(--color-on-tertiary-container) !important;
+      box-shadow: 0 1px 0 0 var(--color-on-tertiary-container);
+    }
+
+    /* Mobile menu transition */
+    #mobile-menu {
+      transition: opacity var(--duration-base) var(--ease-out-expo),
+                  transform var(--duration-base) var(--ease-out-expo);
+    }
+    #mobile-menu[hidden] {
+      display: block !important;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+    }
+    #mobile-menu.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Step 6: Reduced motion — keeps timing, removes physical movement & blur */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-entrance,
+      .word-split.animate-words .word {
+        animation: fade-in var(--duration-slower) ease both !important;
+      }
+      .animate-image  { animation: fade-in var(--duration-slow) ease both !important; }
+      .animate-line   { animation: fade-in var(--duration-line) ease both !important; }
+      .btn-primary:hover,
+      .btn-secondary:hover,
+      .card-hover:hover { transform: none !important; }
+      .cta-link:hover .cta-icon { transform: none !important; }
+      .nav-link::after { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary-fixed-dim selection:text-tertiary">
+
+  <!-- ── Navigation ── -->
+  <nav
+    class="bg-surface/80 backdrop-blur-md text-body-md fixed top-0 w-full border-b border-outline-variant/20"
+    style="z-index: var(--z-nav);"
+    aria-label="Primary navigation"
+  >
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+      <div class="font-headline-md text-headline-md font-semibold text-primary tracking-tight">
+        Dr. James Caristo
+      </div>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="nav-link active text-on-tertiary-container font-semibold py-1 transition-colors duration-200" href="#about">About</a>
+        <a class="nav-link text-secondary hover:text-primary py-1 transition-colors duration-200" href="#experience">Experience</a>
+        <a class="nav-link text-secondary hover:text-primary py-1 transition-colors duration-200" href="#location">Location</a>
+        <a class="nav-link text-secondary hover:text-primary py-1 transition-colors duration-200" href="#contact">Contact</a>
+        <a class="btn-primary bg-primary text-on-primary rounded px-6 py-2 font-label-md" href="#contact">
+          Book Consultation
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-toggle"
+        class="md:hidden text-primary p-1 rounded"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        type="button"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      hidden
+      class="md:hidden bg-surface border-t border-outline-variant/20 px-margin-mobile py-4 flex flex-col gap-4"
+      role="menu"
+    >
+      <a class="text-on-tertiary-container font-semibold py-2 border-b border-outline-variant/10" href="#about" role="menuitem">About</a>
+      <a class="text-secondary py-2 border-b border-outline-variant/10 hover:text-primary transition-colors" href="#experience" role="menuitem">Experience</a>
+      <a class="text-secondary py-2 border-b border-outline-variant/10 hover:text-primary transition-colors" href="#location" role="menuitem">Location</a>
+      <a class="text-secondary py-2 border-b border-outline-variant/10 hover:text-primary transition-colors" href="#contact" role="menuitem">Contact</a>
+      <a class="btn-primary bg-primary text-on-primary rounded px-6 py-3 font-label-md text-center mt-2" href="#contact">
+        Book Consultation
+      </a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── 1. Hero ── -->
+    <section class="relative min-h-[90vh] flex items-center pt-24 pb-section-gap overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0" aria-hidden="true">
+        <div class="absolute inset-0 bg-primary/20 mix-blend-multiply" style="z-index: var(--z-raised);"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-transparent" style="z-index: calc(var(--z-raised) + 1);"></div>
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvg2RMEyuF_d1_GOakna6OknCED9WbhfovmVAYsuE7lRYTEHCWpvqK3L2phrWWJx9ndb2C_hYsEEloEd-j4h2A1BLL9Too_qSpu10J9X2gO19TzKWGMmdNaBHtrteJj_7o4QRSd1c1eMmFtwsTqRXfdGFbuBMwP_AqH6G-htuWOjUFKoT9Jcb94KKfXw2QlWDnpiUeJmAVewCwVdKEvASMZWJMoRVz4lYMyJ-kW3yxw0qh3gdKH5VrSYqKeiTs3KgMhtRRENVuFa0C"
+          alt="State-of-the-art cardiothoracic surgical suite with Sydney skyline at dusk"
+          class="w-full h-full object-cover will-animate-image"
+          loading="eager"
+          style="z-index: var(--z-base);"
+        />
+      </div>
+
+      <div class="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full" style="z-index: var(--z-overlay);">
+        <div class="max-w-2xl">
+          <div class="precision-divider-h w-24 mb-8 will-animate-line"></div>
+
+          <!-- Word-by-word headline -->
+          <h1 class="font-display-lg-mobile md:font-display-lg text-primary mb-6 word-split" aria-label="Excellence in Cardiothoracic Surgery">
+            <!-- Words injected by JS for animation; fallback text below for no-JS -->
+            <noscript>Excellence in Cardiothoracic Surgery</noscript>
+          </h1>
+
+          <p class="font-body-lg text-secondary mb-10 max-w-lg will-animate stagger-2">
+            Providing compassionate, world-class heart and lung care in Sydney.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 will-animate stagger-3">
+            <a class="btn-primary bg-primary text-on-primary rounded px-8 py-4 text-center font-label-md" href="#contact">
+              Book a Consultation
+            </a>
+            <a class="btn-secondary border border-primary text-primary bg-transparent rounded px-8 py-4 text-center font-label-md" href="#about">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. About Dr. Caristo ── -->
+    <section class="py-section-gap bg-surface-bright" id="about">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+
+          <div class="col-span-1 md:col-span-5 relative will-animate">
+            <div class="aspect-[3/4] bg-surface-container rounded-lg overflow-hidden relative">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI3UATeaAS1z-xu1v_J4ahQTrZdiCFRgllamjQrj8g8fyMF3DwRYkT9ILLav8UsOrCp8MHFdquT2JsCW4WYjSPEJSpRpadwQ_hjOwA6hctAyvGRGrQxitbIf8OY-RsRfs8FpVzht_HgJq5L4moL-kuwQslLgZj-t8lYgTFCb-x5Xot_olHL-kAyYrMO5UnZVyhkGROZ6LLR09j0vlu5Oe-nyXCh_gxvKgqIodTKkIkWaEsEY0MJWksFYZE9Ek6BxFc6gXyVaNwYwJi"
+                alt="Portrait of Dr. James Caristo, cardiothoracic surgeon, in clinical office setting"
+                class="w-full h-full object-cover will-animate-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-surface-container-low -z-10 rounded-lg" aria-hidden="true"></div>
+          </div>
+
+          <div class="col-span-1 md:col-span-6 md:col-start-7 pt-8 md:pt-0">
+            <div class="flex items-start gap-6">
+              <div class="precision-divider hidden md:block h-32 mt-2 will-animate-line" aria-hidden="true"></div>
+              <div class="will-animate">
+                <h2 class="font-headline-lg text-primary mb-4">
+                  A dedication to surgical precision and patient-centered care.
+                </h2>
+                <p class="font-body-lg text-secondary mb-6">
+                  Dr. James Caristo is a leading cardiothoracic surgeon based in Sydney, known for his meticulous approach to complex heart and lung procedures. His practice is built on a foundation of clinical excellence and a deep commitment to the well-being of his patients.
+                </p>
+                <p class="font-body-md text-secondary mb-8">
+                  As a Fellow of the Royal Australasian College of Surgeons (FRACS), Dr. Caristo brings decades of specialized training and experience to every case, ensuring that patients receive the highest standard of care available globally.
+                </p>
+                <div class="flex items-center gap-3 text-primary font-label-md uppercase tracking-wider">
+                  <span class="w-8 h-px bg-outline-variant/50" aria-hidden="true"></span>
+                  FRACS, MBBS (Hons)
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. Stats ── -->
+    <section class="py-16 bg-primary" aria-label="Practice statistics">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center text-on-primary">
+
+          <div class="will-animate stagger-0">
+            <p class="font-display-lg-mobile text-on-primary counter" data-target="20" aria-label="Over 20 years experience">0</p>
+            <p class="font-label-md text-primary-fixed-dim uppercase tracking-wider mt-2">Years Experience</p>
+          </div>
+          <div class="will-animate stagger-1">
+            <p class="font-display-lg-mobile text-on-primary counter" data-target="1200" aria-label="Over 1,200 procedures performed">0</p>
+            <p class="font-label-md text-primary-fixed-dim uppercase tracking-wider mt-2">Procedures Performed</p>
+          </div>
+          <div class="will-animate stagger-2">
+            <p class="font-display-lg-mobile text-on-primary counter" data-target="98" aria-label="98% patient satisfaction">0</p>
+            <p class="font-label-md text-primary-fixed-dim uppercase tracking-wider mt-2">Patient Satisfaction %</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4. Qualifications & Expertise ── -->
+    <section class="py-section-gap bg-background" id="experience">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+
+        <div class="text-center mb-16 will-animate">
+          <h2 class="font-headline-lg text-primary mb-4">Qualifications &amp; Expertise</h2>
+          <div class="precision-divider-h w-16 mx-auto will-animate-line"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+
+          <!-- Education -->
+          <div class="card-hover bg-surface-bright p-8 rounded-lg ambient-shadow border border-outline-variant/10 will-animate stagger-0">
+            <span class="material-symbols-outlined text-on-tertiary-container text-3xl mb-6 block" aria-hidden="true">school</span>
+            <h3 class="font-headline-md text-primary mb-3">Education</h3>
+            <p class="text-secondary font-body-md">
+              University of Sydney
+              <span class="text-sm opacity-80 mt-1 block">Bachelor of Medicine, Bachelor of Surgery (Honours)</span>
+            </p>
+          </div>
+
+          <!-- Fellowship -->
+          <div class="card-hover bg-surface-bright p-8 rounded-lg ambient-shadow border border-outline-variant/10 will-animate stagger-1">
+            <span class="material-symbols-outlined text-on-tertiary-container text-3xl mb-6 block" aria-hidden="true">award_star</span>
+            <h3 class="font-headline-md text-primary mb-3">Fellowships</h3>
+            <p class="text-secondary font-body-md">
+              Royal Prince Alfred Hospital
+              <span class="text-sm opacity-80 mt-1 block">Advanced Cardiothoracic Fellowship</span>
+            </p>
+          </div>
+
+          <!-- Expertise (spans 2 rows) -->
+          <div class="card-hover bg-surface-bright p-8 rounded-lg ambient-shadow border border-outline-variant/10 md:row-span-2 md:col-start-3 will-animate stagger-2">
+            <span class="material-symbols-outlined text-on-tertiary-container text-3xl mb-6 block" aria-hidden="true">favorite</span>
+            <h3 class="font-headline-md text-primary mb-6">Areas of Expertise</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 will-animate stagger-0">
+                <span class="material-symbols-outlined text-on-tertiary-container text-sm mt-1" aria-hidden="true">check</span>
+                <span class="text-secondary">Minimally Invasive Valve Surgery</span>
+              </li>
+              <li class="flex items-start gap-3 will-animate stagger-1">
+                <span class="material-symbols-outlined text-on-tertiary-container text-sm mt-1" aria-hidden="true">check</span>
+                <span class="text-secondary">Aortic Reconstruction</span>
+              </li>
+              <li class="flex items-start gap-3 will-animate stagger-2">
+                <span class="material-symbols-outlined text-on-tertiary-container text-sm mt-1" aria-hidden="true">check</span>
+                <span class="text-secondary">Coronary Artery Bypass Grafting</span>
+              </li>
+              <li class="flex items-start gap-3 will-animate stagger-3">
+                <span class="material-symbols-outlined text-on-tertiary-container text-sm mt-1" aria-hidden="true">check</span>
+                <span class="text-secondary">Thoracic Oncology</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Decorative image -->
+          <div class="bg-surface-container rounded-lg overflow-hidden md:col-span-2 h-64 will-animate-image">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuADFMK4-hUfm1EbPHTItTpYHMGV9TE0rp7icLOipScjqUI2MlwHOyNW2g8clm3SHS4FaVnqiLaYz2dqJTkjtT6z-b_Ws5t4hPt2ByLaFoqss56wXbGAMssVR6XCSWsrNSAmWNLSc6822KYKMPmh7NPm5ER06Czt4RWcckkwN79PV0sA2Cv0Oa40MEg-od2WO_XyN5Rje8n2E3DrpAoJfKrfhWoYo3zulilj2n8wCMykheBUEkABct7B__DdxtFfPQHif0iSH_AQ45E9"
+              alt="Precision surgical instruments on sterile drape in modern operating room"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5. Philosophy quote ── -->
+    <section class="py-section-gap bg-primary text-on-primary relative overflow-hidden">
+      <div class="absolute right-0 top-0 opacity-5 select-none" aria-hidden="true">
+        <span class="material-symbols-outlined" style="font-size: 400px;">format_quote</span>
+      </div>
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative text-center" style="z-index: var(--z-raised);">
+        <div class="max-w-3xl mx-auto">
+          <p class="font-display-lg-mobile md:font-display-lg leading-tight mb-8 will-animate word-split" aria-label="Restoring heart health through surgical innovation and empathy.">
+            <noscript>"Restoring heart health through surgical innovation and empathy."</noscript>
+          </p>
+          <div class="precision-divider-h w-12 mx-auto mb-6 will-animate-line" style="background-color: rgba(196, 198, 207, 0.3);"></div>
+          <p class="font-label-md tracking-widest uppercase text-primary-fixed-dim will-animate">Dr. James Caristo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. Locations ── -->
+    <section class="py-section-gap bg-surface-bright" id="location">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+
+        <div class="mb-16 will-animate">
+          <h2 class="font-headline-lg text-primary mb-4">Practice Locations</h2>
+          <p class="text-secondary font-body-lg max-w-2xl">
+            Consultations and procedures are conducted at Sydney's premier medical facilities, ensuring access to state-of-the-art technology and dedicated postoperative care.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+
+          <div class="card-hover flex flex-col sm:flex-row gap-6 p-6 border-b border-outline-variant/20 items-start will-animate stagger-0">
+            <div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded shrink-0">
+              <span class="material-symbols-outlined text-primary" aria-hidden="true">location_on</span>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-primary mb-2">Macquarie University Hospital</h3>
+              <p class="text-secondary mb-4">
+                Suite 401, Clinic Building<br />
+                2 Technology Place<br />
+                Macquarie University NSW 2109
+              </p>
+              <a class="cta-link text-on-tertiary-container font-label-md flex items-center gap-1" href="#" aria-label="View map for Macquarie University Hospital">
+                View Map
+                <span class="material-symbols-outlined text-sm cta-icon" aria-hidden="true">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="card-hover flex flex-col sm:flex-row gap-6 p-6 border-b border-outline-variant/20 items-start will-animate stagger-1">
+            <div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded shrink-0">
+              <span class="material-symbols-outlined text-primary" aria-hidden="true">location_on</span>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-primary mb-2">St Vincent's Private Hospital</h3>
+              <p class="text-secondary mb-4">
+                Suite 705, Xavier Building<br />
+                406 Victoria Street<br />
+                Darlinghurst NSW 2010
+              </p>
+              <a class="cta-link text-on-tertiary-container font-label-md flex items-center gap-1" href="#" aria-label="View map for St Vincent's Private Hospital">
+                View Map
+                <span class="material-symbols-outlined text-sm cta-icon" aria-hidden="true">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 7. Contact ── -->
+    <section class="py-section-gap bg-background" id="contact">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+          <div class="will-animate">
+            <h2 class="font-headline-lg text-primary mb-6">Request a Consultation</h2>
+            <p class="text-secondary font-body-md mb-10">
+              To schedule an appointment or for referral enquiries, please contact our rooms directly or complete the form. A member of our clinical team will respond promptly.
+            </p>
+            <div class="space-y-6 mb-12">
+              <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-on-tertiary-container" aria-hidden="true">phone</span>
+                <a href="tel:+61298765432" class="text-primary font-body-lg hover:text-on-tertiary-container transition-colors">(02) 9876 5432</a>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-on-tertiary-container" aria-hidden="true">mail</span>
+                <a href="mailto:reception@drcaristo.com.au" class="text-primary font-body-lg hover:text-on-tertiary-container transition-colors">reception@drcaristo.com.au</a>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-on-tertiary-container" aria-hidden="true">fax</span>
+                <span class="text-secondary font-body-md">Fax: (02) 9876 5433</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 8: Form — accessible labels, correct type, JS handler -->
+          <div class="card-hover bg-surface-bright p-8 rounded-lg ambient-shadow border border-outline-variant/10 will-animate">
+            <form id="contact-form" class="space-y-6" novalidate>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block font-label-md text-secondary mb-2" for="firstName">First Name</label>
+                  <input
+                    class="w-full bg-transparent border-0 border-b border-outline-variant/30 px-0 py-2 text-primary transition-colors"
+                    id="firstName" name="firstName" type="text" autocomplete="given-name" required
+                  />
+                </div>
+                <div>
+                  <label class="block font-label-md text-secondary mb-2" for="lastName">Last Name</label>
+                  <input
+                    class="w-full bg-transparent border-0 border-b border-outline-variant/30 px-0 py-2 text-primary transition-colors"
+                    id="lastName" name="lastName" type="text" autocomplete="family-name" required
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block font-label-md text-secondary mb-2" for="email">Email Address</label>
+                <input
+                  class="w-full bg-transparent border-0 border-b border-outline-variant/30 px-0 py-2 text-primary transition-colors"
+                  id="email" name="email" type="email" autocomplete="email" required
+                />
+              </div>
+              <div>
+                <label class="block font-label-md text-secondary mb-2" for="phone">Phone Number</label>
+                <input
+                  class="w-full bg-transparent border-0 border-b border-outline-variant/30 px-0 py-2 text-primary transition-colors"
+                  id="phone" name="phone" type="tel" autocomplete="tel"
+                />
+              </div>
+              <div>
+                <label class="block font-label-md text-secondary mb-2" for="enquiryType">Enquiry Type</label>
+                <select
+                  class="w-full bg-transparent border-0 border-b border-outline-variant/30 px-0 py-2 text-primary transition-colors"
+                  id="enquiryType" name="enquiryType"
+                >
+                  <option>New Patient Consultation</option>
+                  <option>Follow-up Appointment</option>
+                  <option>Referring Doctor Enquiry</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <!-- Success message (hidden until form submits) -->
+              <div id="form-success" hidden role="status" aria-live="polite" class="text-on-tertiary-container font-body-md py-3 px-4 bg-tertiary-fixed/20 rounded-lg">
+                Thank you — we'll be in touch within one business day.
+              </div>
+
+              <button
+                class="btn-primary w-full bg-primary text-on-primary rounded px-6 py-4 font-label-md mt-8"
+                type="submit"
+              >
+                Submit Enquiry
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="bg-primary text-on-primary font-caption text-caption w-full pt-section-gap pb-8 border-t border-outline-variant/10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+
+      <div class="col-span-1 md:col-span-2 mb-8 md:mb-0 will-animate">
+        <div class="font-headline-md text-headline-md text-on-primary mb-4">
+          Dr. James Caristo
+        </div>
+        <p class="text-secondary-fixed-dim max-w-sm">
+          Providing exceptional cardiothoracic surgical care with precision, authority, and calm assurance.
+        </p>
+      </div>
+
+      <div class="col-span-1 md:col-span-2 flex flex-col md:items-end justify-between will-animate">
+        <nav aria-label="Footer navigation">
+          <div class="flex flex-wrap gap-x-6 gap-y-2 mb-8 md:mb-0 justify-start md:justify-end">
+            <a class="text-secondary-fixed-dim hover:text-on-primary transition-colors" href="#">Privacy Policy</a>
+            <a class="text-secondary-fixed-dim hover:text-on-primary transition-colors" href="#">Terms of Service</a>
+            <a class="text-secondary-fixed-dim hover:text-on-primary transition-colors" href="#">Patient Resources</a>
+            <a class="text-secondary-fixed-dim hover:text-on-primary transition-colors" href="#">AHPRA Registration</a>
+          </div>
+        </nav>
+        <!-- Step 10: Fixed UTF-8 encoding corruption (Â© → ©) -->
+        <div class="text-secondary-fixed-dim mt-8">
+          &copy; 2024 Dr. James Caristo. All Rights Reserved. Cardiothoracic Surgery Sydney.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ── Step 6: Animation + Interaction JS ── -->
+  <script src="main.js"></script>
+
+</body>
+</html>
