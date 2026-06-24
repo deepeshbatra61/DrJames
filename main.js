@@ -1,222 +1,289 @@
 /* ============================================================
-   Caristo Surgical Excellence — main.js
-   Handles: mobile menu, entrance animations, word-split
-   headlines, number counters, reduced motion compliance.
+   Caristo — main.js
+   Steps 6 (animations), 7 (responsive/mobile menu),
+   8 (form), 9 (ECG shader × 2 unique canvases)
    ============================================================ */
 
-(function () {
-  "use strict";
+// ── Step 9: Unique-ID WebGL ECG heartbeat shader ─────────────
+function createECGShader(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
 
-  /* ── Reduced motion check ── */
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  const vsSource = `
+    attribute vec2 a_position;
+    void main() {
+      gl_Position = vec4(a_position, 0.0, 1.0);
+    }
+  `;
 
-  /* ── 1. Mobile menu toggle ── */
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
+  const fsSource = `
+    precision mediump float;
+    uniform float u_time;
+    uniform vec2  u_resolution;
 
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("open");
-
-      if (isOpen) {
-        mobileMenu.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.querySelector(".material-symbols-outlined").textContent =
-          "menu";
-        menuToggle.setAttribute("aria-label", "Open navigation menu");
-        // Hide after transition ends
-        setTimeout(() => {
-          if (!mobileMenu.classList.contains("open")) {
-            mobileMenu.hidden = true;
-          }
-        }, 300);
-      } else {
-        mobileMenu.hidden = false;
-        // Force reflow before adding open class so transition plays
-        mobileMenu.offsetHeight;
-        mobileMenu.classList.add("open");
-        menuToggle.setAttribute("aria-expanded", "true");
-        menuToggle.querySelector(".material-symbols-outlined").textContent =
-          "close";
-        menuToggle.setAttribute("aria-label", "Close navigation menu");
-      }
-    });
-
-    // Close menu when a link inside it is clicked
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.querySelector(".material-symbols-outlined").textContent =
-          "menu";
-        menuToggle.setAttribute("aria-label", "Open navigation menu");
-        setTimeout(() => { mobileMenu.hidden = true; }, 300);
-      });
-    });
-  }
-
-  /* ── 2. Word-by-word headline split ── */
-  function splitWords(el, text) {
-    el.innerHTML = "";
-    const words = text.trim().split(/\s+/);
-    words.forEach((word, i) => {
-      const span = document.createElement("span");
-      span.className = "word";
-      span.textContent = word;
-      if (!prefersReducedMotion) {
-        span.style.animationDelay = (i * 0.1) + "s";
-      }
-      el.appendChild(span);
-    });
-  }
-
-  const headlineTexts = {
-    // Hero h1
-    ".word-split[aria-label='Excellence in Cardiothoracic Surgery']":
-      "Excellence in Cardiothoracic Surgery",
-    // Quote
-    ".word-split[aria-label='Restoring heart health through surgical innovation and empathy.']":
-      "“Restoring heart health through surgical innovation and empathy.”",
-  };
-
-  Object.entries(headlineTexts).forEach(([selector, text]) => {
-    const el = document.querySelector(selector);
-    if (el) splitWords(el, text);
-  });
-
-  /* ── 3. IntersectionObserver — entrance animations ── */
-  const THRESHOLD = 0.1;
-
-  function observeElements(selector, animClass, options = {}) {
-    const els = document.querySelectorAll(selector);
-    if (!els.length) return;
-
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add(animClass);
-          entry.target.classList.remove(
-            "will-animate",
-            "will-animate-image",
-            "will-animate-line"
-          );
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: THRESHOLD, ...options });
-
-    els.forEach((el) => obs.observe(el));
-  }
-
-  // Standard content blocks
-  observeElements(".will-animate", "animate-entrance");
-  // Images
-  observeElements(".will-animate-image", "animate-image");
-  // Divider lines
-  observeElements(".will-animate-line", "animate-line");
-
-  // Word-split headlines (triggered by visibility)
-  const wordHeadlines = document.querySelectorAll(".word-split");
-  if (wordHeadlines.length) {
-    const headlineObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-words");
-          headlineObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: THRESHOLD });
-    wordHeadlines.forEach((el) => headlineObs.observe(el));
-  }
-
-  /* ── 4. Number counters ── */
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const duration = prefersReducedMotion ? 0 : 1400;
-    const suffix = el.dataset.suffix || "";
-    const start = performance.now();
-
-    function tick(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = Math.round(easeOutCubic(progress) * target);
-      el.textContent = value.toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = target.toLocaleString() + suffix;
+    float ekg(float x) {
+      float period = 1.2;
+      float t = mod(x, period);
+      float beat = 0.0;
+      beat += 0.07  * exp(-pow((t - 0.15) / 0.04,  2.0));
+      beat -= 0.04  * exp(-pow((t - 0.30) / 0.02,  2.0));
+      beat += 0.55  * exp(-pow((t - 0.36) / 0.018, 2.0));
+      beat -= 0.09  * exp(-pow((t - 0.43) / 0.025, 2.0));
+      beat += 0.12  * exp(-pow((t - 0.65) / 0.07,  2.0));
+      beat += 0.03  * exp(-pow((t - 0.85) / 0.05,  2.0));
+      return beat;
     }
 
-    requestAnimationFrame(tick);
+    void main() {
+      vec2 uv = gl_FragCoord.xy / u_resolution;
+      float t = u_time * 0.3;
+      float blipX = mod(t * 0.9, 1.0);
+      float ekgY  = ekg(uv.x - t * 0.9) * 0.55 + 0.5;
+      float dist  = abs(uv.y - ekgY);
+
+      float glow = 0.0025 / (dist + 0.001);
+      glow = clamp(glow, 0.0, 1.0);
+
+      float blipDist      = abs(uv.x - blipX);
+      float blipHighlight = smoothstep(0.04, 0.0, blipDist) * 0.35;
+      glow += blipHighlight * smoothstep(0.04, 0.0, dist);
+
+      vec3 lineColor = vec3(0.071, 0.549, 0.573);
+      vec3 coreColor = vec3(0.6,   1.0,   1.0);
+      vec3 col = mix(lineColor, coreColor, clamp(glow * 1.5, 0.0, 1.0));
+
+      float gridX = mod(uv.x * 10.0, 1.0);
+      float gridY = mod(uv.y * 10.0, 1.0);
+      float grid  = max(smoothstep(0.95, 1.0, gridX), smoothstep(0.95, 1.0, gridY)) * 0.04;
+      col += grid;
+
+      float vig = pow(clamp(1.0 - length((uv - 0.5) * 1.4), 0.0, 1.0), 0.6);
+      gl_FragColor = vec4(col * glow * vig, glow * vig * 0.95);
+    }
+  `;
+
+  function compileShader(src, type) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
   }
 
-  const counters = document.querySelectorAll(".counter");
-  if (counters.length) {
-    const counterObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Also trigger the entrance animation
-          entry.target.classList.add("animate-entrance");
-          entry.target.classList.remove("will-animate");
-          animateCounter(entry.target);
-          counterObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    counters.forEach((el) => counterObs.observe(el));
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compileShader(vsSource, gl.VERTEX_SHADER));
+  gl.attachShader(prog, compileShader(fsSource, gl.FRAGMENT_SHADER));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+
+  const quad   = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+  const posLoc  = gl.getAttribLocation(prog, 'a_position');
+  const timeLoc = gl.getUniformLocation(prog, 'u_time');
+  const resLoc  = gl.getUniformLocation(prog, 'u_resolution');
+
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+
+  let start = null;
+  function render(now) {
+    if (!start) start = now;
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(timeLoc, (now - start) * 0.001);
+    gl.uniform2f(resLoc, canvas.width, canvas.height);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+}
+
+// ── Step 7: Mobile menu ──────────────────────────────────────
+function initMobileMenu() {
+  const toggle = document.getElementById('menu-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  if (!toggle || !menu) return;
+
+  function openMenu() {
+    menu.hidden = false;
+    void menu.offsetHeight;
+    menu.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation menu');
+    toggle.querySelector('.material-symbols-outlined').textContent = 'close';
   }
 
-  /* ── 5. Active nav link on scroll ── */
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("nav a.nav-link");
-
-  if (sections.length && navLinks.length) {
-    const sectionObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navLinks.forEach((link) => {
-            link.classList.toggle(
-              "active",
-              link.getAttribute("href") === "#" + entry.target.id
-            );
-          });
-        }
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    sections.forEach((s) => sectionObs.observe(s));
+  function closeMenu() {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+    setTimeout(() => { menu.hidden = true; }, 300);
   }
 
-  /* ── 6. Contact form — basic handler ── */
-  const form = document.getElementById("contact-form");
-  const formSuccess = document.getElementById("form-success");
+  toggle.addEventListener('click', () => {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
 
-  if (form && formSuccess) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      // Basic required-field validation
-      const requiredFields = form.querySelectorAll("[required]");
-      let valid = true;
-      requiredFields.forEach((field) => {
-        if (!field.value.trim()) {
-          valid = false;
-          field.style.borderBottomColor = "var(--color-error)";
-        } else {
-          field.style.borderBottomColor = "";
-        }
-      });
-      if (!valid) return;
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+}
 
-      // Show success message
-      form.querySelectorAll("input, select, button").forEach((el) => {
-        el.disabled = true;
-      });
-      formSuccess.hidden = false;
-      formSuccess.focus();
+// ── Step 6: Word-split headlines ─────────────────────────────
+function initWordSplitHeadlines() {
+  document.querySelectorAll('h1.word-split').forEach(h1 => {
+    const text = h1.getAttribute('aria-label') || h1.textContent.trim();
+    if (!text) return;
+    h1.innerHTML = '';
+    text.split(/\s+/).forEach((word, i) => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = word;
+      span.style.animationDelay = (i * 0.07) + 's';
+      h1.appendChild(span);
+      h1.appendChild(document.createTextNode(' '));
     });
+  });
+}
+
+// ── Step 6: Entrance animations via IntersectionObserver ──────
+function initEntranceAnimations() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.classList.contains('will-animate')) {
+        el.classList.replace('will-animate', 'animate-entrance');
+      } else if (el.classList.contains('will-animate-image')) {
+        el.classList.replace('will-animate-image', 'animate-image');
+      } else if (el.classList.contains('will-animate-line')) {
+        el.classList.replace('will-animate-line', 'animate-line');
+      } else if (el.tagName === 'H1') {
+        el.classList.add('animate-words');
+      }
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.will-animate, .will-animate-image, .will-animate-line').forEach(el => obs.observe(el));
+
+  // Hero h1 word-split trigger
+  const h1 = document.querySelector('h1.word-split');
+  if (h1) obs.observe(h1);
+}
+
+// ── Step 6: Number counters ──────────────────────────────────
+function animateCounter(el, to, duration = 1800) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = to;
+    return;
+  }
+  const start = performance.now();
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  (function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.round(easeOutCubic(p) * to);
+    if (p < 1) requestAnimationFrame(tick);
+  })(start);
+}
+
+function initCounters() {
+  const counters = document.querySelectorAll('[data-counter]');
+  if (!counters.length) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateCounter(entry.target, parseInt(entry.target.dataset.counter, 10));
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => obs.observe(el));
+}
+
+// ── Slider ───────────────────────────────────────────────────
+function initSlider() {
+  const slider = document.getElementById('expertise-slider');
+  const btnL   = document.getElementById('slide-left');
+  const btnR   = document.getElementById('slide-right');
+  if (!slider) return;
+
+  const items = Array.from(slider.querySelectorAll('.slider-item'));
+
+  function updateActive() {
+    const mid = slider.scrollLeft + slider.offsetWidth / 2;
+    let closest = items[0], minDist = Infinity;
+    items.forEach(item => {
+      const d = Math.abs(item.offsetLeft + item.offsetWidth / 2 - mid);
+      if (d < minDist) { minDist = d; closest = item; }
+    });
+    items.forEach(item => item.classList.toggle('is-active', item === closest));
   }
 
-})();
+  slider.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+
+  function scrollBy(dir) {
+    const w = items[0] ? items[0].offsetWidth + 32 : 300;
+    slider.scrollBy({ left: dir * w, behavior: 'smooth' });
+  }
+
+  if (btnL) btnL.addEventListener('click', () => scrollBy(-1));
+  if (btnR) btnR.addEventListener('click', () => scrollBy(1));
+}
+
+// ── Step 8: Form submit handler ──────────────────────────────
+function initForm() {
+  const form    = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    await new Promise(r => setTimeout(r, 900));
+    if (success) {
+      success.hidden = false;
+      success.focus();
+    }
+    btn.textContent = 'Sent';
+    form.querySelectorAll('input, select').forEach(el => { el.disabled = true; });
+  });
+}
+
+// ── Nav active link on scroll ────────────────────────────────
+function initNavHighlight() {
+  const links = document.querySelectorAll('nav a.nav-link');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+      });
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+}
+
+// ── Boot ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  createECGShader('ecg-expertise');
+  createECGShader('ecg-contact');
+
+  initWordSplitHeadlines();
+  initMobileMenu();
+  initSlider();
+  initForm();
+  initCounters();
+  initNavHighlight();
+
+  requestAnimationFrame(() => requestAnimationFrame(initEntranceAnimations));
+});
