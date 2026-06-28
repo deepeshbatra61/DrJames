@@ -50,8 +50,8 @@ function createECGShader(canvasId) {
       float blipHighlight = smoothstep(0.04, 0.0, blipDist) * 0.35;
       glow += blipHighlight * smoothstep(0.04, 0.0, dist);
 
-      vec3 lineColor = vec3(0.071, 0.549, 0.573);
-      vec3 coreColor = vec3(0.6,   1.0,   1.0);
+      vec3 lineColor = vec3(0.537, 0.616, 0.627);
+      vec3 coreColor = vec3(0.847, 0.902, 0.910);
       vec3 col = mix(lineColor, coreColor, clamp(glow * 1.5, 0.0, 1.0));
 
       float gridX = mod(uv.x * 10.0, 1.0);
@@ -181,16 +181,19 @@ function initEntranceAnimations() {
 
 // ── Step 6: Number counters ──────────────────────────────────
 function animateCounter(el, to, duration = 1800) {
+  const suffix = el.dataset.suffix || '';
+  const fmt = n => Math.round(n).toLocaleString() + suffix;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    el.textContent = to;
+    el.textContent = fmt(to);
     return;
   }
   const start = performance.now();
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
   (function tick(now) {
     const p = Math.min((now - start) / duration, 1);
-    el.textContent = Math.round(easeOutCubic(p) * to);
+    el.textContent = fmt(easeOutCubic(p) * to);
     if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = fmt(to);
   })(start);
 }
 
@@ -283,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
   createECGShader('ecg-expertise');
   createECGShader('ecg-career');
   createECGShader('ecg-contact');
+  createECGShader('ecg-stats');
 
   initWordSplitHeadlines();
   initMobileMenu();

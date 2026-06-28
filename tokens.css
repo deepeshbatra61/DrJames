@@ -1,100 +1,107 @@
 /* ============================================================
-   Caristo — Design Token System (Teal / Glassmorphic)
-   Source of truth: imported/screens/NEW-welcoming-teal-glassmorphic.html
+   Caristo — Design Token System (Deep Cyan / Teal)
+   Deep cyan #0d1e21 · Soft teal #2d464b · Cool gray #899da0 · Pale blue #d8e6e8
    ============================================================ */
 
 :root {
   /* --- Color Palette --- */
-  --color-primary:                    #00666b;
+  --color-primary:                    #2d464b;
   --color-on-primary:                 #ffffff;
-  --color-primary-container:          #008287;
-  --color-on-primary-container:       #f3ffff;
-  --color-primary-fixed:              #8ff2f8;
-  --color-primary-fixed-dim:          #72d6dc;
-  --color-on-primary-fixed:           #002021;
-  --color-on-primary-fixed-variant:   #004f53;
-  --color-inverse-primary:            #72d6dc;
+  --color-primary-container:          #3e5e64;
+  --color-on-primary-container:       #eaf3f4;
+  --color-primary-fixed:              #d8e6e8;
+  --color-primary-fixed-dim:          #b9d0d3;
+  --color-on-primary-fixed:           #0d1e21;
+  --color-on-primary-fixed-variant:   #2d464b;
+  --color-inverse-primary:            #899da0;
 
-  --color-secondary:                  #2f6480;
+  --color-secondary:                  #4a6469;
   --color-on-secondary:               #ffffff;
-  --color-secondary-container:        #abdefe;
-  --color-on-secondary-container:     #2e637f;
-  --color-secondary-fixed:            #c5e7ff;
-  --color-secondary-fixed-dim:        #9bcded;
-  --color-on-secondary-fixed:         #001e2d;
-  --color-on-secondary-fixed-variant: #104c67;
+  --color-secondary-container:        #b9d0d3;
+  --color-on-secondary-container:     #0d1e21;
+  --color-secondary-fixed:            #d8e6e8;
+  --color-secondary-fixed-dim:        #b9d0d3;
+  --color-on-secondary-fixed:         #0d1e21;
+  --color-on-secondary-fixed-variant: #2d464b;
 
-  --color-tertiary:                   #595d5c;
+  --color-tertiary:                   #5a7378;
   --color-on-tertiary:                #ffffff;
-  --color-tertiary-container:         #717575;
-  --color-on-tertiary-container:      #fafdfc;
-  --color-tertiary-fixed:             #e0e3e2;
-  --color-tertiary-fixed-dim:         #c4c7c6;
-  --color-on-tertiary-fixed:          #181c1c;
-  --color-on-tertiary-fixed-variant:  #434847;
+  --color-tertiary-container:         #899da0;
+  --color-on-tertiary-container:      #0d1e21;
+  --color-tertiary-fixed:             #d8e6e8;
+  --color-tertiary-fixed-dim:         #b9d0d3;
+  --color-on-tertiary-fixed:          #0d1e21;
+  --color-on-tertiary-fixed-variant:  #2d464b;
 
   --color-error:              #ba1a1a;
   --color-on-error:           #ffffff;
   --color-error-container:    #ffdad6;
   --color-on-error-container: #93000a;
 
-  --color-surface:                   #f7fafd;
-  --color-surface-dim:               #d7dade;
-  --color-surface-bright:            #f7fafd;
+  --color-surface:                   #d8e6e8;
+  --color-surface-dim:               #c4d6d8;
+  --color-surface-bright:            #e8f1f2;
   --color-surface-container-lowest:  #ffffff;
-  --color-surface-container-low:     #f1f4f7;
-  --color-surface-container:         #ebeef2;
-  --color-surface-container-high:    #e5e8ec;
-  --color-surface-container-highest: #e0e3e6;
-  --color-surface-variant:           #e0e3e6;
-  --color-surface-tint:              #00696e;
-  --color-on-surface:                #181c1f;
-  --color-on-surface-variant:        #3e4949;
-  --color-inverse-surface:           #2d3134;
-  --color-inverse-on-surface:        #eef1f4;
+  --color-surface-container-low:     #e4eff0;
+  --color-surface-container:         #dbe9ea;
+  --color-surface-container-high:    #d0e0e2;
+  --color-surface-container-highest: #c4d6d8;
+  --color-surface-variant:           #c4d6d8;
+  --color-surface-tint:              #2d464b;
+  --color-on-surface:                #0d1e21;
+  --color-on-surface-variant:        #2d464b;
+  --color-inverse-surface:           #1a2e31;
+  --color-inverse-on-surface:        #d8e6e8;
 
-  --color-outline:         #6e797a;
-  --color-outline-variant: #bdc9c9;
+  --color-outline:         #5a7378;
+  --color-outline-variant: #a9bcbe;
 
-  --color-background:    #f7fafd;
-  --color-on-background: #181c1f;
+  --color-background:    #d8e6e8;
+  --color-on-background: #0d1e21;
 
-  /* Brand accent — used for decorative lines, icons, active states */
-  --color-brand-teal: #128c92;
+  /* Accent (default) — soft teal, for use on LIGHT surfaces & glass cards */
+  --color-brand-teal: #2d464b;
+
+  /* Accent (light) — cool gray, for use on DARK sections (nav, hero, dark bands) */
+  --color-accent-light: #899da0;
 
   /* Dark section background */
-  --color-dark-bg: #001e2d;
+  --color-dark-bg: #0d1e21;
 
   /* --- Typography --- */
-  --font-display:  'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body:     'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --font-display:  'Cooper Hewitt', system-ui, sans-serif;
+  --font-body:     'Cooper Hewitt', system-ui, sans-serif;
   --font-mono:     ui-monospace, 'Cascadia Code', monospace;
+
+  /* Weight aliases */
+  --font-weight-heavy: 800;
+  --font-weight-thin:  300;
 
   --text-display-lg-size:    48px;
   --text-display-lg-lh:      56px;
-  --text-display-lg-weight:  700;
+  --text-display-lg-weight:  800;
   --text-display-lg-ls:      -0.02em;
 
   --text-display-lg-mobile-size:   32px;
   --text-display-lg-mobile-lh:     40px;
-  --text-display-lg-mobile-weight: 700;
+  --text-display-lg-mobile-weight: 800;
   --text-display-lg-mobile-ls:     -0.02em;
 
   --text-headline-md-size:   24px;
   --text-headline-md-lh:     32px;
-  --text-headline-md-weight: 600;
+  --text-headline-md-weight: 800;
 
   --text-headline-sm-size:   20px;
   --text-headline-sm-lh:     28px;
-  --text-headline-sm-weight: 600;
+  --text-headline-sm-weight: 800;
 
   --text-body-lg-size:   18px;
   --text-body-lg-lh:     28px;
-  --text-body-lg-weight: 400;
+  --text-body-lg-weight: 300;
 
   --text-body-md-size:   16px;
   --text-body-md-lh:     24px;
-  --text-body-md-weight: 400;
+  --text-body-md-weight: 300;
 
   --text-label-md-size:   14px;
   --text-label-md-lh:     20px;
@@ -114,18 +121,18 @@
   --space-section-gap:      120px;
 
   /* --- Border Radius --- */
-  --radius-default: 0.25rem;  /* 4px  */
-  --radius-lg:      0.5rem;   /* 8px  */
-  --radius-xl:      0.75rem;  /* 12px */
-  --radius-2xl:     1rem;     /* 16px */
-  --radius-3xl:     1.5rem;   /* 24px */
+  --radius-default: 0.25rem;
+  --radius-lg:      0.5rem;
+  --radius-xl:      0.75rem;
+  --radius-2xl:     1rem;
+  --radius-3xl:     1.5rem;
   --radius-full:    9999px;
 
   /* --- Glass panel --- */
-  --glass-bg:     rgba(255, 255, 255, 0.8);
+  --glass-bg:     rgba(216, 230, 232, 0.78);
   --glass-blur:   20px;
-  --glass-border: rgba(0, 102, 107, 0.1);
-  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+  --glass-border: rgba(45, 70, 75, 0.18);
+  --glass-shadow: 0 4px 24px rgba(13, 30, 33, 0.10);
 
   /* --- Z-index scale --- */
   --z-base:    0;
