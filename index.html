@@ -248,6 +248,10 @@
     .btn-pill:hover  { transform: translateY(-4px); }
     .btn-pill:active { transform: translateY(-1px); }
 
+    /* Nav primary action — richer teal so it stands out on the dark bar */
+    .btn-contact { background-color: #3a8089; transition: background-color 0.2s ease; }
+    .btn-contact:hover { background-color: #47969f; }
+
     .card-hover {
       transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s var(--ease-spring);
     }
@@ -352,7 +356,7 @@
         <a class="nav-link text-white/90 hover:text-white transition-colors text-sm font-semibold leading-none" href="#experience">Qualifications</a>
         <a class="nav-link text-white/90 hover:text-white transition-colors text-sm font-semibold leading-none" href="#career">Career</a>
         <a class="nav-link text-white/90 hover:text-white transition-colors text-sm font-semibold leading-none" href="#location">Locations</a>
-        <a class="btn-pill bg-primary text-white rounded-full px-6 py-2 text-sm font-semibold shadow-sm leading-none" href="#contact">
+        <a class="btn-pill btn-contact text-white rounded-full px-6 py-2 text-sm font-semibold shadow-sm leading-none" href="#contact">
           Contact
         </a>
       </div>
@@ -530,31 +534,64 @@
 
     <!-- ── 3D tilt heart (vanilla Aceternity-style effect) ── -->
     <section class="py-section-gap relative overflow-hidden" id="heart-3d">
-      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Subtle background glow so the space feels intentional, not sterile -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute right-[6%] top-1/2 -translate-y-1/2 w-[44rem] h-[44rem] rounded-full"
+             style="background: radial-gradient(circle, rgba(45,70,75,0.12), transparent 65%);"></div>
+        <div class="absolute left-[2%] bottom-[8%] w-[26rem] h-[26rem] rounded-full"
+             style="background: radial-gradient(circle, rgba(137,157,160,0.10), transparent 70%);"></div>
+      </div>
 
-          <div class="will-animate">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+          <!-- Content -->
+          <div class="lg:col-span-5 will-animate">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
               <span class="font-label-md text-brand-teal uppercase tracking-widest">Expertise</span>
             </div>
-            <h2 class="font-display-lg-mobile md:font-headline-md text-on-surface mb-6 max-w-xl">
+            <h2 class="font-display-lg-mobile md:font-headline-md text-on-surface mb-6">
               Cardiothoracic surgery, in expert hands.
             </h2>
-            <p class="font-body-lg text-on-surface-variant max-w-md">
+            <p class="card-desc text-on-surface-variant max-w-md">
               From minimally invasive valve repair to complex aortic reconstruction — precision care
               for the heart and chest, built on technical mastery and calm assurance.
             </p>
-            <p class="card-desc text-brand-teal mt-6">Hover over the heart →</p>
+
+            <!-- Primary CTA -->
+            <div class="mt-8 flex flex-wrap items-center gap-5">
+              <a href="#contact" class="btn-pill bg-primary text-white rounded-full px-8 py-4 text-sm font-semibold uppercase tracking-widest shadow-md">
+                Book a Consultation
+              </a>
+              <span class="hidden md:inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest">
+                Hover the heart
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="mt-10 pt-8 border-t border-outline-variant/50">
+              <div class="text-outline text-xs font-semibold uppercase tracking-widest mb-4">Affiliations &amp; Credentials</div>
+              <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                <span class="text-on-surface font-label-md uppercase tracking-wide">FRACS</span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant" aria-hidden="true"></span>
+                <span class="text-on-surface-variant font-label-md">Macquarie University Hospital</span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant" aria-hidden="true"></span>
+                <span class="text-on-surface-variant font-label-md">St Vincent's Private</span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant" aria-hidden="true"></span>
+                <span class="text-on-surface-variant font-label-md">RACS Fellow</span>
+              </div>
+            </div>
           </div>
 
-          <!-- 3D tilt heart -->
-          <div class="tilt-scene flex items-center justify-center py-8 will-animate-image" data-tilt>
+          <!-- 3D tilt heart (scaled up to command the space) -->
+          <div class="lg:col-span-7 tilt-scene flex items-center justify-center py-6 will-animate-image" data-tilt>
             <div class="tilt-card" data-tilt-card>
               <img
                 src="heart-3d.png"
                 alt="Anatomical human heart"
-                class="tilt-heart-img w-full max-w-md mx-auto select-none"
+                class="tilt-heart-img w-full max-w-2xl mx-auto select-none"
                 draggable="false"
               />
             </div>
