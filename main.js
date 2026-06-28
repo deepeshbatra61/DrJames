@@ -281,6 +281,29 @@ function initNavHighlight() {
   document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
 }
 
+// ── 3D tilt (vanilla port of the Aceternity 3D-card effect) ──
+function init3DTilt() {
+  const scenes = document.querySelectorAll('[data-tilt]');
+  if (!scenes.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  scenes.forEach(scene => {
+    const card = scene.querySelector('[data-tilt-card]');
+    if (!card) return;
+
+    scene.addEventListener('mousemove', (e) => {
+      if (reduce) return;
+      const { left, top, width, height } = scene.getBoundingClientRect();
+      const x = (e.clientX - left - width / 2) / 20;
+      const y = (e.clientY - top - height / 2) / 20;
+      card.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+    });
+    scene.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  });
+}
+
 // ── Boot ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   createECGShader('ecg-expertise');
@@ -293,6 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSlider();
   initForm();
   initCounters();
+  init3DTilt();
   initNavHighlight();
 
   requestAnimationFrame(() => requestAnimationFrame(initEntranceAnimations));

@@ -126,6 +126,28 @@
     /* Card description — larger & medium weight so it isn't faint/thin */
     .card-desc { font-size: 18px; line-height: 28px; font-weight: 500; }
 
+    /* ── 3D tilt heart (vanilla port of the Aceternity 3D-card effect) ── */
+    .tilt-scene { perspective: 1200px; }
+    .tilt-card {
+      transition: transform 0.2s ease-out;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .tilt-heart-img {
+      transition: transform 0.3s ease-out, filter 0.3s ease-out;
+      transform: translateZ(0);
+      filter: drop-shadow(0 24px 28px rgba(13, 30, 33, 0.32));
+    }
+    /* "Float in air" — lift toward the viewer on hover */
+    .tilt-scene:hover .tilt-heart-img {
+      transform: translateZ(80px) scale(1.05);
+      filter: drop-shadow(0 52px 46px rgba(13, 30, 33, 0.5));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tilt-card { transition: none; }
+      .tilt-scene:hover .tilt-heart-img { transform: none; }
+    }
+
     /* ── Glass panel (Step 1 token refs) ── */
     .glass-panel {
       background: var(--glass-bg);
@@ -503,6 +525,42 @@
         <p class="text-white/40 font-body-md text-sm mt-14 will-animate">
           * Placeholder figures shown for demonstration — to be replaced with verified practice data.
         </p>
+      </div>
+    </section>
+
+    <!-- ── 3D tilt heart (vanilla Aceternity-style effect) ── -->
+    <section class="py-section-gap relative overflow-hidden" id="heart-3d">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <div class="will-animate">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-8 h-px bg-brand-teal will-animate-line" aria-hidden="true"></div>
+              <span class="font-label-md text-brand-teal uppercase tracking-widest">Expertise</span>
+            </div>
+            <h2 class="font-display-lg-mobile md:font-headline-md text-on-surface mb-6 max-w-xl">
+              Cardiothoracic surgery, in expert hands.
+            </h2>
+            <p class="font-body-lg text-on-surface-variant max-w-md">
+              From minimally invasive valve repair to complex aortic reconstruction — precision care
+              for the heart and chest, built on technical mastery and calm assurance.
+            </p>
+            <p class="card-desc text-brand-teal mt-6">Hover over the heart →</p>
+          </div>
+
+          <!-- 3D tilt heart -->
+          <div class="tilt-scene flex items-center justify-center py-8 will-animate-image" data-tilt>
+            <div class="tilt-card" data-tilt-card>
+              <img
+                src="heart-3d.png"
+                alt="Anatomical human heart"
+                class="tilt-heart-img w-full max-w-md mx-auto select-none"
+                draggable="false"
+              />
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
